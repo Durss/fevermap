@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<styleSheets>
+		<styleSheet><![CDATA[css/flashstyles.css?v=3]]></styleSheet>
+	</styleSheets>
+	
+	<fonts>
+		<font><![CDATA[swf/fonts/fonts.swf?v=3]]></font>
+	</fonts>
+	
+	<labels>
+		<label code="menuFilters"><![CDATA[Filters]]></label>
+		<label code="menuSearch"><![CDATA[Search]]></label>
+		<label code="menuNavigation"><![CDATA[Navigation]]></label>
+		<label code="menuTracker"><![CDATA[Tracker]]></label>
+		<label code="menuLogout"><![CDATA[Log-out]]></label>
+		
+		<label code="thanks"><![CDATA[Application gratefully hosted by]]></label>
+		<label code="initFaillure"><![CDATA[An error has occured while the application was initializing.<br />Please make sure your internet connection is active.<br />Error details :]]></label>
+		
+		<label code="countdownTitle"><![CDATA[Save in :]]></label>
+		<label code="countedownDetails"><![CDATA[<p align="center">Saves your data<br />and configurations<br />at the countdown's end</p>]]></label>
+		
+		<label code="mapEngineGotoSubmit"><![CDATA[GO]]></label>
+		<label code="mapEngineAreaCoords"><![CDATA[[${x}][${y}]]]></label>
+		
+		<label code="submitForm"><![CDATA[Submit]]></label>
+		<label code="submitFormError"><![CDATA[<font color="#cc0000">ERROR</font>]]></label>
+		<label code="createMapEntry"><![CDATA[Create entry]]></label>
+		<label code="updateMapEntry"><![CDATA[Update]]></label>
+		<label code="flagAreaAsVisited"><![CDATA[Visited]]></label>
+		<label code="flagAreaAsNonVisited"><![CDATA[Not visited]]></label>
+		<label code="flagAreaAsCleaned"><![CDATA[Cleaned]]></label>
+		<label code="flagAreaAsNonCleaned"><![CDATA[Not cleaned]]></label>
+		<label code="flagAreaImHere"><![CDATA[I'm here]]></label>
+		<label code="flagAreaWhosThere"><![CDATA[Who's there?]]></label>
+		<label code="flagAreaFinPath"><![CDATA[How to go there?]]></label>
+		<label code="touchedObjects"><![CDATA[Check the objects picked :]]></label>
+		<label code="tooltipAsterisk"><![CDATA[(click)]]></label>
+		<label code="mapEditEnemies"><![CDATA[Enemies :]]></label>
+		<label code="mapEditMultipleObjects"><![CDATA[Multiple objects :]]></label>
+		<label code="mapEditUniqueObjects"><![CDATA[Unique objects :]]></label>
+		<label code="mapEditSpecialObjects"><![CDATA[Special objects :]]></label>
+		<label code="mapEditOther"><![CDATA[Others :]]></label>
+		<label code="mapEditReset"><![CDATA[Reset]]></label>
+		<label code="mapEditCopy"><![CDATA[Calk]]></label>
+		<label code="mapEditDirection"><![CDATA[Available directions :]]></label>
+		
+		<label code="loginFormTitle"><![CDATA[Please login :]]></label>
+		<label code="loginFormLogin"><![CDATA[UID (<a href="http://muxxu.com/a/fevermap/?act=ids" target="_blank" class="link"><font color="#FF8000">?</font></a>) :]]></label>
+		<label code="loginFormPassword"><![CDATA[PUBKEY (<a href="http://muxxu.com/a/fevermap/?act=ids" target="_blank" class="link"><font color="#FF8000">?</font></a>) :]]></label>
+		<label code="loginFormHelp"><![CDATA[<a href="http://muxxu.com/a/fevermap/?act=ids" target="_blank" class="link"><font color="#FF8000">Know my logins</font></a>]]></label>
+		<label code="loginFormSubmit"><![CDATA[Log In]]></label>
+		<label code="loginFormRememberMe"><![CDATA[Keep my IDs]]></label>
+		<label code="loginError1"><![CDATA[Error #2 : SQL Error]]></label>
+		<label code="loginError2"><![CDATA[Error #2 : Request parameters missing.]]></label>
+		<label code="loginError3"><![CDATA[Invalid logins]]></label>
+		<label code="loginError100"><![CDATA[Error #2 : Invalid returned data.]]></label>
+		<label code="loginError101"><![CDATA[Error #2 : Connection error.]]></label>
+		
+		<label code="loadAreaError1"><![CDATA[Error #3 : SQL Error]]></label>
+		<label code="loadAreaError2"><![CDATA[Error #3 : Request parameters missing.]]></label>
+		<label code="loadAreaError100"><![CDATA[Error #3 : Invalid returned data.]]></label>
+		<label code="loadAreaError101"><![CDATA[Error #3 : Connection error.]]></label>
+		
+		<label code="addAreaError1"><![CDATA[Error #4 : SQL Error (ADD)]]></label>
+		<label code="addAreaError2"><![CDATA[Error #4 : SQL Error (UPDATE)]]></label>
+		<label code="addAreaError3"><![CDATA[Error #4 : Request parameters missing.]]></label>
+		<label code="addAreaError4"><![CDATA[Error #4 : Unable to create backup.]]></label>
+		<label code="addAreaError100"><![CDATA[Error #4 : Invalid returned data.]]></label>
+		<label code="addAreaError101"><![CDATA[Error #4 : Connection error.]]></label>
+		
+		<label code="loadMessageError1"><![CDATA[Error #5 : SQL Error]]></label>
+		<label code="loadMessageError2"><![CDATA[Error #5 : Request parameters missing.]]></label>
+		<label code="loadMessageError100"><![CDATA[Error #5 : Invalid returned data.]]></label>
+		<label code="loadMessageError101"><![CDATA[Error #5 : Connection error.]]></label>
+		
+		<label code="dataDownloadError1"><![CDATA[Error #6 : SQL Error]]></label>
+		<label code="dataDownloadError100"><![CDATA[Error #6 : Invalid returned data.]]></label>
+		<label code="dataDownloadError101"><![CDATA[Error #6 : Connection error.]]></label>
+		
+		<label code="dataUploadError1"><![CDATA[Error #7 : SQL Error]]></label>
+		<label code="dataUploadError2"><![CDATA[Error #7 : Request parameters missing.]]></label>
+		<label code="dataUploadError100"><![CDATA[Error #7 : Invalid returned data.]]></label>
+		<label code="dataUploadError101"><![CDATA[Error #7 : Connection error.]]></label>
+		
+		<label code="addMessageError1"><![CDATA[Error #8 : SQL Error]]></label>
+		<label code="addMessageError2"><![CDATA[Error #8 : Request parameters missing.]]></label>
+		<label code="addMessageError100"><![CDATA[Error #8 : Invalid returned data.]]></label>
+		<label code="addMessageError101"><![CDATA[Error #8 : Connection error.]]></label>
+		
+		<label code="getUsersOnError1"><![CDATA[Error #9 : SQL Error]]></label>
+		<label code="getUsersOnError2"><![CDATA[Error #9 : Request parameters missing.]]></label>
+		<label code="getUsersOnError100"><![CDATA[Error #9 : Invalid returned data.]]></label>
+		<label code="getUsersOnError101"><![CDATA[Error #9 : Connection error.]]></label>
+		
+		<label code="reportMessageError1"><![CDATA[Error #9 :  SQL Error]]></label>
+		<label code="reportMessageError2"><![CDATA[Error #9 : Request parameters missing.]]></label>
+		<label code="reportMessageError100"><![CDATA[Error #9 : Invalid returned data.]]></label>
+		<label code="reportMessageError101"><![CDATA[Error #9 : Connection error.]]></label>
+		
+		<label code="positionUpdateError1"><![CDATA[Error #1 :  SQL Error]]></label>
+		<label code="positionUpdateError2"><![CDATA[Error #1 : Request parameters missing.]]></label>
+		<label code="positionUpdateError100"><![CDATA[Error #1 : Invalid returned data.]]></label>
+		<label code="positionUpdateError101"><![CDATA[Error #1 : Connection error.]]></label>
+		
+		<label code="error400"><![CDATA[You must be logged to do this action.<br />If you keep experiencing problems, try to connect directly to the application :<br /><a href="http://fevermap.org" class="link">http://fevermap.org</a>]]></label>
+		<label code="error401"><![CDATA[Request token has expired.]]></label>
+		<label code="error402"><![CDATA[Your account has been locked due to abuse.]]></label>
+		
+		<label code="feedback"><![CDATA[FEEDBACK]]></label>
+		
+		<label code="selectorReset"><![CDATA[RESET]]></label>
+		
+		<label code="revisionsTitle"><![CDATA[Island revisions :]]></label>
+		<label code="revisionsInfos"><![CDATA[Revision <b>${nbr}/${tot}</b> by <b>${user}</b><br />The <b>${date}</b>]]></label>
+		<label code="revisionsEmpty"><![CDATA[No revisions]]></label>
+		
+		<label code="spoilObjects"><![CDATA[Display the objects]]></label>
+		<label code="spoilGlow"><![CDATA[Show islands containing objects]]></label>
+		<label code="diffObjects"><![CDATA[Specifiy if the object is unique or multiple<br />(<font color="#ff0000">Unique</font> , <font color="#0066ff">Multiple</font> , <font color="#FF99FF">U & M</font> , <font color="#FFFFFF">Unknown</font>)]]></label>
+		<label code="showGotObjects"><![CDATA[Display objects you have collected.]]></label>
+		<label code="renderModeTitle"><![CDATA[Map rendering mode :]]></label>
+		<label code="renderModeClassic"><![CDATA[Normal]]></label>
+		<label code="renderModePath"><![CDATA[Path]]></label>
+		<label code="renderModeDistance"><![CDATA[Distance]]></label>
+		<label code="renderModePopulation"><![CDATA[Players <i>(<font color="#1B848F">Populated</font> - <font color="#509101">Empty</font>)</i>]]></label>
+		<label code="renderModeDifficulty"><![CDATA[Difficulty <i>(<font color="#DB0202">Hard</font> - <font color="#509101">Easy</font>)</i>]]></label>
+		<label code="renderModeFreedIslands"><![CDATA[Freed islands <i>(<font color="#DB0202">Not freed</font> - <font color="#509101">Freed</font>)</i>]]></label>
+		<label code="toggleFullScreen"><![CDATA[Fullscreen ON/OFF]]></label>
+		<label code="autoExitFullScreenHelp"><![CDATA[As the text input is disabled in fullscreen mode, fullscreen has been automatically disabled.]]></label>
+		
+		<label code="needUpdateAir"><![CDATA[You must update your application to continue!<br /><a href="http://www.fevermap.org/FeverMap.air" class="link">- Download update -</a>]]></label>
+		<label code="needUpdateSwf"><![CDATA[Update available.<br /><br />If the application does not refresh on its own,<br />please refresh the page.<br /><br />If it loops endlessly, please clean your cache and try again]]></label>
+		
+		<label code="itemName1"><![CDATA[Camembeurk]]></label>
+		<label code="itemName2"><![CDATA[Vol-o-vent]]></label>
+		<label code="itemName3"><![CDATA[Burilame]]></label>
+		<label code="itemName4"><![CDATA[Fulgo]]></label>
+		<label code="itemName5"><![CDATA[Ignik]]></label>
+		<label code="itemName6"><![CDATA[Rasen]]></label>
+		<label code="itemName7"><![CDATA[Key]]></label>
+		<label code="itemName8"><![CDATA[+5 plays]]></label>
+		<label code="itemName9"><![CDATA[+20 plays]]></label>
+		<label code="itemName10"><![CDATA[Heart piece]]></label>
+		<label code="itemName11"><![CDATA[FeverX Cartridge]]></label>
+		<label code="itemName12"><![CDATA[???]]></label>
+		<label code="itemName13"><![CDATA[???]]></label>
+		<label code="itemName14"><![CDATA[Book<br />(avoid a game)]]></label>
+		<label code="itemName15"><![CDATA[Sneakers<br/>(Speed x2)]]></label>
+		<label code="itemName16"><![CDATA[???]]></label>
+		<label code="itemName17"><![CDATA[???]]></label>
+		<label code="itemName18"><![CDATA[???]]></label>
+		<label code="itemName19"><![CDATA[???]]></label>
+		<label code="itemName20"><![CDATA[???]]></label>
+		<label code="itemName21"><![CDATA[Glasses<br/>(Shows the first game of the 8 monsters closest to you)]]></label>
+		<label code="itemName22"><![CDATA[Radar]]></label>
+		<label code="itemName23"><![CDATA[Prism<br />(1 play => 3 rainbows)]]></label>
+		<label code="itemName24"><![CDATA[FeverX]]></label>
+		<label code="itemName25"><![CDATA[Umbrella<br />(+1 arc / jour)]]></label>
+		<label code="itemName26"><![CDATA[Lucky Dice]]></label>
+		<label code="itemName27"><![CDATA[???]]></label>
+		<label code="itemName28"><![CDATA[Chemical ice cream<br />(+1 play / day)]]></label>
+		<label code="itemName29"><![CDATA[???]]></label>
+		<label code="itemName30"><![CDATA[ChromaX<br />(1 play = 1 rainbow)]]></label>
+		<label code="itemName31"><![CDATA[???]]></label>
+		<label code="itemName32"><![CDATA[Fork<br />(+10% chance of dealing 2 damage when you win a game)]]></label>
+		<label code="itemName33"><![CDATA[Breadcrumb<br />(teleport to last touched statue)]]></label>
+		<label code="itemName34"><![CDATA[Rune Ini]]></label>
+		<label code="itemName35"><![CDATA[Rune Sed]]></label>
+		<label code="itemName36"><![CDATA[Rune Aarg]]></label>
+		<label code="itemName37"><![CDATA[Rune ???]]></label>
+		<label code="itemName38"><![CDATA[Rune ???]]></label>
+		<label code="itemName39"><![CDATA[Rune Laf]]></label>
+		<label code="itemName40"><![CDATA[Rune ???]]></label>
+		<label code="itemName41"><![CDATA[Red chest]]></label>
+		<label code="itemName42"><![CDATA[Green chest]]></label>
+		<label code="itemName43"><![CDATA[Blue chest]]></label>
+		<label code="itemName44"><![CDATA[Statue]]></label>
+		<label code="itemName45"><![CDATA[Portal]]></label>
+		
+		<label code="menuSearchObjectsTitle"><![CDATA[Select the objects you want to search for :]]></label>
+		<label code="menuSearchPathTitle"><![CDATA[Path finder :]]></label>
+		<label code="menuSearchPathStartLabel"><![CDATA[Start :]]></label>
+		<label code="menuSearchPathEndLabel"><![CDATA[End :]]></label>
+		<label code="menuSearchPathSubmit"><![CDATA[Search]]></label>
+		<label code="menuSearchPathClear"><![CDATA[Clear path]]></label>
+		<label code="menuSearchPathNoResult"><![CDATA[No path found.]]></label>
+		<label code="menuSearchUserTitle"><![CDATA[Search players :]]></label>
+		<label code="menuSearchUserNameDetails"><![CDATA[Enter an ID or player's name]]></label>
+		<label code="menuSearchUserZoneDetails"><![CDATA[Who's on [x][y] ?]]></label>
+		<label code="menuSearchUserSubmit"><![CDATA[Search]]></label>
+		<label code="menuSearchResultTitle"><![CDATA[Players matching your search]]></label>
+		<label code="menuSearchNoResults"><![CDATA[No results.]]></label>
+		
+		<label code="menuNavTitle"><![CDATA[Go To :]]></label>
+		<label code="menuNavCenterPousty"><![CDATA[Center on me]]></label>
+		
+		<label code="menuTrackTitle"><![CDATA[Recent modifications :]]></label>
+		<label code="menuTrackItemTitle"><![CDATA[[${X}][${Y}]]]></label>
+		<label code="menuTrackItemInfos"><![CDATA[<b>${PSEUDO}</b>]]></label>
+		<label code="menuTrackItemInfosBefore"><![CDATA[...before...]]></label>
+		
+		<label code="menuTrackItemCaption1"><![CDATA[Ground]]></label>
+		<label code="menuTrackItemCaption2"><![CDATA[Object/chest]]></label>
+		<label code="menuTrackItemCaption3"><![CDATA[Monster]]></label>
+		<label code="menuTrackItemCaption4"><![CDATA[Rainbow]]></label>
+		<label code="menuTrackItemCaption5"><![CDATA[Wall]]></label>
+		
+		<label code="messageCensored"><![CDATA[- Message moderated -]]></label>
+		<label code="messageReport"><![CDATA[Report]]></label>
+		<label code="menuMessageTitle"><![CDATA[A soft word? A love declaration?<br />An insult? Have fun!<br /><span class="menuContentTitleSmall">(but not too much please...)</span>]]></label>
+		<label code="menuMessageEntryTitle"><![CDATA[By <b>${PSEUDO}</b> the <b>${DATE}</b> :]]></label>
+		<label code="menuMessageAddTitle"><![CDATA[Write your comment then select how much love it contains with the colored buttons :<br/> <span class="menuContentTitleSmall">( <font color="#DB3E3E">I hate you, dirty @&#$!</font> ,   <font color="#80D147">I looove you sooo much &lt;3 ! </font>)</span>]]></label>
+		<label code="menuMessageSubmit"><![CDATA[Send]]></label>
+		<label code="menuMessageTooShort"><![CDATA[ Please... at least 10 characters!]]></label>
+		
+		<label code="initDataTitle"><![CDATA[It's the first time you're using this app on this computer with this browser :]]></label>
+		<label code="initDataOptionsTitle"><![CDATA[Please customize the spoiler level before using the Map :]]></label>
+		<label code="initDataDescription"><![CDATA[<span class="initInfo">Previous map information <i>(visited / cleaned islands, touched objects)</i> has been detected!</span><br />Because the map information is no longer stored in your cookies, but on your computer, do you want to send the detected map information to the server?</b>]]></label>
+		<label code="initDataAccept"><![CDATA[Yes]]></label>
+		<label code="initDataDecline"><![CDATA[No]]></label>
+		<label code="initSubmit"><![CDATA[Continue]]></label>
+		<label code="initDownload"><![CDATA[Download my map informations. Just in case <i>(advised)</i>]]></label>
+		
+		<label code="help"><![CDATA[  If you like or hate this applicaiton please let me know throught the <b>"Message"</b> panel :)!<br /><br />  Edition rights are given by <a href="http://muxxu.com/msg/write?user=durss" class="legalsLink" target="_blank">Durss</a> but only to a few people. You can ask him editing rights, but he will only consider you  if you have at least <b><font color="#FF0000">6000pts</font></b> in Fever.<br /><br />  <a href="http://www.motion-twin.com/" class="legalsLink">Motion-Twin</a> is currently hosting the site and domain name, and I am very thankful for that <i>(as you can see with the cute button in the bottom-right ^^)</i>.<br /><br />  Thanks to <a href="http://muxxu.com/u/ANS1" class="legalsLink">ANS1</a> for helping with the English translation.<br /><br />  For any suggestion, or to report a bug, please use the <b>FeedBack</b> button at the bottom of the screen.]]></label>
+		<label code="legals"><![CDATA[Most graphics & design (c) 2009 <a href="http://www.motion-twin.com/" class="legalsLink">Motion-Twin</a> all right reserved.]]></label>
+	</labels>
+	
+	<vars>
+		<var code="minReportModerated">5</var>
+		<var code="langs">
+			<lang id="fr"><![CDATA[FR]]></lang>
+			<lang id="en"><![CDATA[EN]]></lang>
+			<lang id="en"><![CDATA[ES]]></lang>
+		</var>
+		<var code="menus">
+			<menu content="com.muxxu.fever.fevermap.components.menu.nav.MenuNavigation" icon="com.muxxu.fever.graphics.Item15Graphic"><![CDATA[Navigation]]></menu>
+			<menu content="com.muxxu.fever.fevermap.components.menu.filters.MenuFilters" icon="com.muxxu.fever.graphics.Item30Graphic"><![CDATA[Options]]></menu>
+			<menu content="com.muxxu.fever.fevermap.components.menu.search.MenuSearch" icon="com.muxxu.fever.graphics.Item22Graphic"><![CDATA[Search]]></menu>
+			<menu content="com.muxxu.fever.fevermap.components.menu.tracker.MenuTracker" icon="com.muxxu.fever.graphics.Item24Graphic"><![CDATA[Tracker]]></menu>
+			<menu content="com.muxxu.fever.fevermap.components.menu.message.MenuMessage" icon="com.muxxu.fever.graphics.Item14Graphic"><![CDATA[Messages]]></menu>
+			<menu content="com.muxxu.fever.fevermap.components.menu.zoom.MenuZoom" icon="com.muxxu.fever.graphics.Item16Graphic"><![CDATA[Zoom]]></menu>
+			<menu content="com.muxxu.fever.fevermap.components.menu.l10n.MenuLangSelector" icon="com.muxxu.fever.graphics.WorldMapGraphic"></menu>
+			<menu content="com.muxxu.fever.fevermap.components.menu.help.MenuHelp" icon="com.muxxu.fever.graphics.Item37Graphic"><![CDATA[?]]></menu>
+			<menu icon="com.muxxu.fever.graphics.Item7Graphic" special="logout"><![CDATA[Log-out]]></menu>
+		</var>
+	</vars>
+	
+	<paths>
+		<path code="feedbackUrl"><![CDATA[http://fevermap.idea.informer.com/]]></path>
+		<path code="profileURL"><![CDATA[http://muxxu.com/user/${UID}]]></path>
+		<path code="reportMessage"><![CDATA[${server}ws/reportMessage?SESSID={v_SESSID}]]></path>
+		<path code="login"><![CDATA[${server}ws/login.php]]></path>
+		<path code="addArea"><![CDATA[${server}ws/addArea.php?SESSID={v_SESSID}]]></path>
+		<path code="loadArea"><![CDATA[${server}ws/loadArea.php?SESSID={v_SESSID}]]></path>
+		<path code="getRevisions"><![CDATA[${server}ws/getRevisions.php?SESSID={v_SESSID}]]></path>
+		<path code="setPosition"><![CDATA[${server}ws/setPosition.php?SESSID={v_SESSID}]]></path>
+		<path code="uploadData"><![CDATA[${server}ws/uploadData.php?SESSID={v_SESSID}]]></path>
+		<path code="downloadData"><![CDATA[${server}ws/downloadData.php?SESSID={v_SESSID}]]></path>
+		<path code="addMessage"><![CDATA[${server}ws/addMessage.php?SESSID={v_SESSID}]]></path>
+		<path code="getMessages"><![CDATA[${server}ws/getMessages.php?SESSID={v_SESSID}]]></path>
+		<path code="getUsersOn"><![CDATA[${server}ws/getUsersOn.php?SESSID={v_SESSID}]]></path>
+		<path code="getToken"><![CDATA[${server}ws/getToken.php?SESSID={v_SESSID}]]></path>
+		<path code="changeLang"><![CDATA[?act=lang_${CODE}]]></path>
+		<path code="serverOnline"><![CDATA[http://fevermap.org/]]></path>
+		<path code="serverOffline"><![CDATA[http://localhost/muxxu/fever/apps/fevermap/]]></path>
+	</paths>
+	
+	<dependencies />
+	
+</root>
