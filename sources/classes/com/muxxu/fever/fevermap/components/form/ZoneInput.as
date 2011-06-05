@@ -1,0 +1,17 @@
+package com.muxxu.fever.fevermap.components.form {	import flash.geom.Point;	import com.nurun.core.lang.Disposable;	import com.nurun.components.form.events.FormComponentEvent;	import flash.display.Sprite;	/**	 * Creates two input	 * 	 * @author  Francois	 */	public class ZoneInput extends Sprite implements Disposable {		private var _inputX:FeverInput;		private var _inputY:FeverInput;		private var _width:Number;								/* *********** *		 * CONSTRUCTOR *		 * *********** */		/**		 * Creates an instance of <code>ZoneInput</code>.		 */		public function ZoneInput() {			_width = 100;			initialize();		}						/* ***************** *		 * GETTERS / SETTERS *		 * ***************** */		/**		 * Sets the component's width without simply scaling it.		 */		override public function set width(value:Number):void {			_width = value;			computePositions();		}				/**		 * Gets the width of the component.		 */		override public function get width():Number { return _width; }				/**		 * Gets the X value.		 */		public function get xValue():Number { return parseInt(_inputX.text); }				/**		 * Gets the Y value.		 */		public function get yValue():Number { return parseInt(_inputY.text); }				/**		 * Sets the X value.		 */		public function set xValue(value:Number):void { _inputX.text = value.toString(); }				/**		 * Sets the Y value.		 */		public function set yValue(value:Number):void { _inputY.text = value.toString(); }				/**		 * Gets the position as a Point.		 */		public function get position():Point { return new Point(xValue, yValue); }				/**		 * Sets the component's tab focus index.		 */		override public function set tabIndex(value:int):void {			_inputX.tabIndex = _inputY.tabIndex = value;		}
+
+		/**		 * Sets the enabled state.		 */		public function set enabled(value:Boolean):void { _inputY.enabled = _inputX.enabled = value; }		
+
+								/* ****** *		 * PUBLIC *		 * ****** */		/**		 * Forces the component's validation.		 */
+		public function validate():void {
+			_inputX.validate();			_inputY.validate();			computePositions();
+		}				/**
+		 * Makes the component garbage collectable.
+		 */
+		public function dispose():void {
+			while(numChildren > 0) {
+				if(getChildAt(0) is Disposable) Disposable(getChildAt(0)).dispose();
+				removeChildAt(0);
+			}						_inputX.removeEventListener(FormComponentEvent.SUBMIT,		dispatchEvent);			_inputY.removeEventListener(FormComponentEvent.SUBMIT,		dispatchEvent);
+		}				/**		 * Resets the values.		 */		public function reset():void {			_inputX.text = _inputX.defaultLabel;			_inputY.text = _inputY.defaultLabel;			_inputX.textfield.scrollH = 0;			_inputY.textfield.scrollH = 0;		}						/* ******* *		 * PRIVATE *		 * ******* */		/**		 * Initialize the class.		 */		private function initialize():void {			_inputX	= addChild(new FeverInput("x")) as FeverInput;			_inputY	= addChild(new FeverInput("y")) as FeverInput;						_inputX.textfield.restrict = "[0-9]\\-";			_inputY.textfield.restrict = "[0-9]\\-";			_inputX.textfield.maxChars = 8;			_inputY.textfield.maxChars = 8;						_inputX.addEventListener(FormComponentEvent.SUBMIT,		dispatchEvent);			_inputY.addEventListener(FormComponentEvent.SUBMIT,		dispatchEvent);		}
+		/**		 * Resize and replace the elements.		 */		private function computePositions():void {			var inputW:int	= (_width - 10) * .5;			_inputX.width	= inputW;			_inputY.width	= inputW;			_inputY.x		= Math.round(_inputX.x + inputW + 10);		}	}}

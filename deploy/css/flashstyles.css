@@ -1,0 +1,82 @@
+﻿.debug { font-family:Arial; font-size:12; color:#CC0000; flash-glow:[1.3,10,ffffff]}
+.error { font-family:Arial; font-size:12; color:#CC0000; }
+.link { color:#CC0000; text-decoration:underline; }
+.warning { color:#FF0000; }
+
+.initDecline { font-family:Arial; font-size:12; color:#cc0000; }
+.initAccept { font-family:Arial; font-size:12; color:#008800; }
+.initDeclineSelected { font-family:Arial; font-weight:bold; font-size:12; color:#FF0000; }
+.initAcceptSelected { font-family:Arial; font-weight:bold; font-size:12; color:#00CC00; }
+
+.thanksInsert { font-family:Arial; font-size:12; color:#ffffff; flash-bitmap:'true'; }
+
+.countdownTitle { font-family:Arial; font-weight:bold; font-size:20; color:#ffffff; }
+
+.initInfo { font-family:Arial; font-weight:bold; font-size:16; color:#00cc00; }
+.initDescription { font-family:Arial; font-size:12; color:#ffffff; }
+
+.help { font-family:Arial; font-size:13; color:#ffffff; flash-bitmap:true; text-align:justify; }
+
+.legals { font-family:Arial; font-size:11; color:#ffffff; flash-bitmap:true; text-align:justify; flash-alpha:.7; }
+.legalsLink { color:#FF9900; font-weight:bold; text-decoration:underline; }
+.legalsLinkSmall { color:#FF9900; text-decoration:underline; }
+
+.menuContentZoom { font-family:Arial; font-weight:bold; font-size:30; color:#cccccc; }
+.menuContentZoom_selected { font-family:Arial; font-weight:bold; font-size:30; color:#ffffff; }
+.menuContentTitle { font-family:Arial; font-weight:bold; font-size:12; color:#ffffff; }
+.menuContentTitleSmall { font-family:Arial; font-weight:normal; font-style:italic; font-size:10; color:#ffffff; }
+.menuContentCaption { font-family:Arial; font-size:10; color:#ffffff; flash-bitmap:'true'; }
+.menuContentTrackTitle { font-family:Arial; font-weight:bold; font-size:12; color:#ffffff; text-align:center; }
+.menuContentTrackInfos { font-family:Arial; font-size:12; color:#ffffff; text-align:center; }
+.menuContentMessageInfos { font-family:Arial; font-size:12; color:#ffffff; }
+.menuContentMessageText { font-family:Arial; font-size:12; color:#ffffff; }
+.menuContentMessageTextInput { font-family:Arial; font-size:14; color:#ffffff; }
+.menuContentReport { font-family:Arial; font-size:10; color:#ffffff; }
+.menuContentReport_over { font-family:Arial; font-size:10; text-decoration:underline; color:#ffffff; }
+.menuContentReport_down { font-family:Arial; font-size:10; color:#cccccc; }
+
+.button { font-family:Arial; font-weight:bold; font-size:12; color:#ffffff; flash-alpha:1; }
+.button_over { font-family:Arial; font-weight:bold; font-size:12; color:#cccccc; }
+.button_down { font-family:Arial; font-weight:bold; font-size:12; color:#aaaaaa; }
+.button_disabled { font-family:Arial; font-weight:bold; font-size:12; color:#ffffff; flash-alpha:.25; }
+
+.inputLabel { font-family:Arial; font-weight:bold; font-size:12; color:#ffffff; }
+.input { font-family:Arial; font-weight:bold; font-size:12; color:#412720; text-align:center; }
+.inputDefault { font-family:Arial; font-weight:bold; font-size:12; color:#E6D0CC; text-align:center; }
+
+.enemiesInfos { font-family:Arial; font-weight:bold; font-size:14; color:#ffffff; }
+.toolTipTitle { font-family:Arial; font-weight:bold; font-size:14; color:#ffffff; }
+.tooltipContent { font-family:Arial; font-weight:bold; font-size:12; color:#ffffff; }
+.tooltipContentError { font-family:Arial; font-weight:bold; font-size:12; color:#FF5555; }
+.tooltipContentSuccess { font-family:Arial; font-weight:bold; font-size:12; color:#00cc00; }
+
+.formAskForAccountCreation { font-family:Arial; font-weight:bold; font-size:10; color:#ffffff; text-decoration:underline; }
+
+.tooltipAsterisk { font-family:Arial; font-weight:bold; font-size:10; color:#ffffff; }
+
+.checkboxLabelUnselected { font-family:Arial; font-size:12; color:#aaaaaa; flash-alpha:1; }
+.checkboxLabelSelected { font-family:Arial; font-size:12; color:#ffffff; flash-alpha:1; }
+.checkboxLabelUnselected_disabled { font-family:Arial; font-size:12; color:#cccccc; flash-alpha:.3; }
+.checkboxLabelSelected_disabled { font-family:Arial; font-size:12; color:#cccccc; flash-alpha:.3; }
+
+.radioButtonLabelUnselected { font-family:Arial; font-size:12; color:#aaaaaa; flash-alpha:1; }
+.radioButtonLabelSelected { font-family:Arial; font-size:12; color:#ffffff; flash-alpha:1; }
+.radioButtonLabelUnselected_disabled { font-family:Arial; font-size:12; color:#cccccc; flash-alpha:.3; }
+.radioButtonLabelSelected_disabled { font-family:Arial; font-size:12; color:#cccccc; flash-alpha:.3; }
+
+.feedback { font-family:Arial; font-size:12; font-weight:bold; color:#CE5B02; }
+.feedback_over { font-family:Arial; font-size:12; font-weight:bold; color:#EA6004; }
+.feedback_down { font-family:Arial; font-size:12; font-weight:bold; color:#C04F03; }
+
+.revisionTitle { font-family:Arial; font-weight:bold; font-size:12; color:#ffffff; }
+.revisionInfos { font-family:Arial; font-size:12; color:#000000; }
+
+.combobox { font-family:Arial; font-weight:bold; font-size:12; color:#ffffff; flash-alpha:1; }
+
+.comboboxItem { font-family:Arial; font-weight:bold; font-size:12; color:#ffffff; flash-alpha:1; }
+.comboboxItem_over { font-family:Arial; font-weight:bold; font-size:12; color:#cccccc; }
+.comboboxItem_down { font-family:Arial; font-weight:bold; font-size:12; color:#aaaaaa; }
+.comboboxItem_disabled { font-family:Arial; font-weight:bold; font-size:12; color:#ffffff; flash-alpha:.25; }
+
+.errorWindowTitle { font-family:Arial; font-weight:bold; font-size:12; color:#000000; }
+.errorWindowDescription { font-family:Arial; font-size:10; color:#000000; }

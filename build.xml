@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	
+		<project default="1. Package application" name="FeverMap">
+
+		<property name="sdk_dir" 			value="D:/Softwares/flex_sdk_v4.1" />
+		<property name="mxmlc" 				value="${sdk_dir}/lib/mxmlc.jar" />
+		<property name="mxmlc_exe" 			value="${sdk_dir}/bin/mxmlc.exe" />
+		<property name="compc" 				value="${sdk_dir}/bin/compc.exe" />
+		<property name="adl" 				value="${sdk_dir}/bin/adl.exe" />
+		<property name="adt" 				value="${sdk_dir}/lib/adt.jar" />
+		<property name="app_name" 			value="FeverMap" />
+		<property name="app_root_dir" 		value="." />
+		<property name="app_type" 			value="as" />
+		<property name="certificate_name" 	value="FeverMap Certificate" />
+		<property name="certificate_pw" 	value="FeverMap" />
+		<property name="assets_dir_name" 	value="assets" />
+		<property name="cert_name" 			value="${certificate_name}" />
+		<property name="password" 			value="${certificate_pw}" />
+		<property name="org_name" 			value="Durss" />
+		<property name="org_unit" 			value="FlashTeam" />
+		<property name="country" 			value="FR" />
+		<property name="key_type" 			value="2048-RSA" />				
+		<property name="cert_loc" 			location="${app_root_dir}/${assets_dir_name}/settings" />
+		<property name="swf_file"	 		value="${app_name}.swf" />
+		<property name="swf_file_beta" 		value="${app_name}_beta.swf" />
+		<property name="swf_crypto_file"	value="crypto.swf" />
+		<property name="air_file" 			value="${app_name}.air" />
+		<property name="swf_bridge_file"	value="lcBridge.swf" />
+		<property name="ant_path" 			value="${app_root_dir}/sources/ant/" />
+		<property name="source_path" 		value="${app_root_dir}/sources/classes/" />
+		<property name="app_descriptor" 	value="${app_root_dir}/${assets_dir_name}/settings/${app_name}.xml" />
+		<property name="main_source" 		value="${app_root_dir}/sources/classes/Application.as" />
+		<property name="certificate" 		value="${app_root_dir}/${assets_dir_name}/settings/${certificate_name}.pfx" />
+		<property name="publish_dir"  		location="${app_root_dir}/deploy" />
+		<property name="assets_dir"  		location="${app_root_dir}/${assets_dir_name}" />
+		<property name="exclude_dir"  		location="${app_root_dir}/${assets_dir_name}/excludes" />
+		<property name="class_dir" 			location="${app_root_dir}/sources/classes" />
+			
+		<target name="1. Package application">
+			<java jar="${adt}" fork="true" failonerror="true">
+				<arg value="-package" />
+				<arg value="-storetype" />
+				<arg value="pkcs12" />
+				<arg value="-keystore" />
+				<arg value="${certificate}" />
+				<arg value="-storepass" />
+				<arg value="${certificate_pw}" />
+				<arg value="${publish_dir}/${air_file}" />
+				<arg value="${app_descriptor}" />
+				<arg value="-C" />
+				<arg value="${publish_dir}/" />
+				<arg value="${swf_file}" />
+				<arg value="-C" />
+				<arg value="${assets_dir}" />
+				<arg value="icons" />
+				<arg value="-C" />
+				<arg value="${publish_dir}" />
+				<arg value="swf" />
+				<arg value="xml" />
+				<arg value="css" />
+			</java>
+		</target>
+		
+		<target name="2. Build directories">
+			<mkdir dir="${publish_dir}" />
+			<mkdir dir="${exclude_dir}" />
+		</target>
+			
+			<target name="3. Compile SWF">
+				<java jar="${mxmlc}" fork="true" failonerror="true">
+					<arg value="-debug=false" />
+					<arg value="-omit-trace-statements=false" />
+					<arg value="+flexlib=${sdk_dir}/frameworks" />
+					<arg value="-library-path=${sdk_dir}/frameworks/libs/" />
+					<arg value="-library-path=sources/bin/framework_FP10.swc" />
+					<arg value="-include-libraries=sources/bin/graphics.swc" />
+					<arg value="-file-specs=${main_source}" />
+					<arg value="-output=${publish_dir}/${swf_file}" />
+					<arg value="-target-player=10.1" />
+					<arg value="-load-externs=${exclude_dir}/applicationLinkReport.xml" />
+					<arg value="-static-link-runtime-shared-libraries=true" />
+					<!-- <arg value="-use-network=false" /> -->
+				</java>
+			</target>
+			
+			<target name="3.1 Compile SWF BETA" depends="6. Compile crypto SWF">
+				<java jar="${mxmlc}" fork="true" failonerror="true">
+					<arg value="-debug=true" />
+					<arg value="-omit-trace-statements=false" />
+					<arg value="+flexlib=${sdk_dir}/frameworks" />
+					<arg value="-library-path=${sdk_dir}/frameworks/libs/" />
+					<arg value="-library-path=sources/bin/framework_FP10.swc" />
+					<arg value="-include-libraries=sources/bin/graphics.swc" />
+					<arg value="-file-specs=${main_source}" />
+					<arg value="-output=${publish_dir}/${swf_file_beta}" />
+					<arg value="-target-player=10.1" />
+					<arg value="-load-externs=${exclude_dir}/applicationLinkReport.xml" />
+					<arg value="-static-link-runtime-shared-libraries=true" />
+					<!-- <arg value="-use-network=false" /> -->
+				</java>
+			</target>
+		
+		<target name="4. Create certificate">
+			<java jar="${adt}" fork="true">
+				<arg value="-certificate" />
+				<arg value="-cn" />
+
+				<arg value="${cert_name}" />
+				<arg value="-ou" />
+				<arg value="${org_unit}" />
+				<arg value="-o" />
+				<arg value="${org_name}" />
+				<arg value="-c" />
+				<arg value="${country}" />
+				<arg value="${key_type}" />
+				<arg value="${cert_loc}/${cert_name}.pfx" />
+
+				<arg value="${password}" />	
+			</java>
+		</target>
+			
+		<target name="5. Clean" description="clean up">
+			<delete dir="${debug_dir}" />
+			<delete dir="${publish_dir}" />
+			<delete dir="${exclude_dir}" />
+		</target>
+			
+		<target name="6. Compile crypto SWF">
+			<property name="output-swf" value="application" />
+			<property name="input-class" value="Application" />
+			<exec executable="${mxmlc_exe}" failonerror="true">
+				<arg line="-source-path '${class_dir}'
+							-include-libraries ${exclude_dir}/dll.swc
+							-default-frame-rate=31
+							-library-path ${sdk_dir}/frameworks/locale/en_US
+							-default-size 400 300
+							-link-report=${exclude_dir}/applicationLinkReport.xml
+							-strict=true
+							'${class_dir}/com/muxxu/fever/fevermap/crypto/DummyRoot.as'
+							-output '${assets_dir}/crypto.swf'
+							-optimize=true
+							-target-player=10 
+							-omit-trace-statements=true
+							-debug=false"/>
+			</exec>
+			<antcall target="7. Compile crypto DLL" />
+			<antcall target="8. encrypt crypto SWF" />
+		</target>
+			
+		<target name="7. Compile crypto DLL" depends="2. Build directories">
+			<exec executable="${compc}" failonerror="true">
+				<arg line="-o ${exclude_dir}/dll.swc
+							-source-path '${class_dir}'
+							-library-path '${basedir}/sources/bin/graphics.swc'
+							-library-path '${basedir}/sources/bin/framework_FP10.swc'
+							-is ${class_dir}/com/muxxu/fever/fevermap/crypto
+							-optimize=true
+							-target-player=10
+							-debug=false"/>
+			</exec>
+		</target>
+			
+		<target name="8. encrypt crypto SWF">
+			<!--<java jar="${ant_path}/XORTask.jar" fork="true" failonerror="true">
+				<arg id="xorKey" value="fd9fd9sdfIFfd5fdohgfdIUFYDGYfd6985f9dFJHPSOUyfgfd5f8d98fd" />
+				<arg id="filePath" value="${assets_dir}/crypto.swf" />
+			</java>-->
+			<taskdef name="xor" classname="XORTask" classpath="${debugdir}"/>
+			<xor xorKey="QpU13q745DnlwuQ1dT599LF64W0b74wN1wC326Mb77G562C4zqy1pKsVJAEN2DjJuk0UCo7Fwrqt91lNl0K9YIWQ8uMElm71" filePath="${assets_dir}/crypto.swf"/>
+		</target>
+	</project>
