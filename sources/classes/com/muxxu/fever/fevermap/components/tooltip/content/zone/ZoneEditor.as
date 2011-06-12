@@ -415,12 +415,14 @@ package com.muxxu.fever.fevermap.components.tooltip.content.zone {
 			stage.addEventListener(KeyboardEvent.KEY_UP, keyUpHandler);
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler);
 			stage.addEventListener(Event.PASTE, pastHandler);
+			stage.addEventListener(Event.COPY, copyHandler);
 		}
 		
 		/**
 		 * Called when the user pasts something
 		 */
 		private function pastHandler(event:Event):void {
+			if(!_opened) return;
 			var m:Array = JSON.decode(Clipboard.generalClipboard.getData(ClipboardFormats.TEXT_FORMAT) as String);
 			if(m != null) {
 				_matrix = m;
@@ -429,14 +431,21 @@ package com.muxxu.fever.fevermap.components.tooltip.content.zone {
 		}
 		
 		/**
+		 * Called when the users wants to copy something.
+		 */
+		private function copyHandler(event:Event):void {
+			if(!_opened) return;
+			Clipboard.generalClipboard.setData(ClipboardFormats.TEXT_FORMAT, JSON.encode(_matrix));
+		}
+		
+		/**
 		 * Called when a key is released.
 		 */
 		private function keyUpHandler(event:KeyboardEvent):void {
+			if(!_opened) return;
 			if(event.keyCode == Keyboard.ESCAPE) {
 				_selectorIndex = _items.length - 4;
 				selectItem(_items[_selectorIndex]);
-			}else if(event.keyCode == Keyboard.C && event.ctrlKey) {
-				Clipboard.generalClipboard.setData(ClipboardFormats.TEXT_FORMAT, JSON.encode(_matrix));
 			}
 		}
 		
