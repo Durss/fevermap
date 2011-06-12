@@ -232,7 +232,7 @@
 		<var code="langs">
 			<lang id="fr"><![CDATA[FR]]></lang>
 			<lang id="en"><![CDATA[EN]]></lang>
-			<lang id="en"><![CDATA[ES]]></lang>
+			<lang id="es"><![CDATA[ES]]></lang>
 		</var>
 		<var code="menus">
 			<menu content="com.muxxu.fever.fevermap.components.menu.nav.MenuNavigation" icon="com.muxxu.fever.graphics.Item15Graphic"><![CDATA[Navigation]]></menu>
