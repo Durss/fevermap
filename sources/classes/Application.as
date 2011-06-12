@@ -1,11 +1,7 @@
 package  {
-
-	import com.muxxu.fever.fevermap.components.SaveCountdownView;
-	import gs.plugins.RemoveChildPlugin;
-	import com.muxxu.fever.fevermap.components.PoustyView;
-	import com.nurun.utils.math.MathUtils;
 	import gs.TweenLite;
 	import gs.plugins.ColorMatrixFilterPlugin;
+	import gs.plugins.RemoveChildPlugin;
 	import gs.plugins.TweenPlugin;
 
 	import net.hires.debug.Stats;
@@ -14,6 +10,8 @@ package  {
 	import com.muxxu.fever.fevermap.commands.InitLibCmd;
 	import com.muxxu.fever.fevermap.components.ExceptionView;
 	import com.muxxu.fever.fevermap.components.FeedbackButton;
+	import com.muxxu.fever.fevermap.components.PoustyView;
+	import com.muxxu.fever.fevermap.components.SaveCountdownView;
 	import com.muxxu.fever.fevermap.components.ThanksInsert;
 	import com.muxxu.fever.fevermap.components.form.FeverCombobox;
 	import com.muxxu.fever.fevermap.components.form.LoginForm;
@@ -40,12 +38,15 @@ package  {
 	import com.nurun.structure.environnement.label.Label;
 	import com.nurun.utils.input.keyboard.KeyboardSequenceDetector;
 	import com.nurun.utils.input.keyboard.events.KeyboardSequenceEvent;
+	import com.nurun.utils.math.MathUtils;
 	import com.nurun.utils.pos.PosUtils;
 
 	import flash.display.DisplayObject;
+	import flash.display.InteractiveObject;
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.events.FocusEvent;
 	import flash.events.TimerEvent;
 	import flash.external.ExternalInterface;
 	import flash.geom.Point;
@@ -209,8 +210,17 @@ package  {
 			NurunButtonKeyFocusManager.getInstance().initialize(stage, new FocusRectGraphic(),types);
 			addChild(NurunButtonKeyFocusManager.getInstance());
 			stage.stageFocusRect = false;
-			
-//			stage.addEventListener(MouseEvent.CLICK, clickHandler);
+			stage.addEventListener(FocusEvent.KEY_FOCUS_CHANGE, focusChangeHandler);
+			stage.addEventListener(FocusEvent.MOUSE_FOCUS_CHANGE, focusChangeHandler);
+		}
+		
+		/**
+		 * Forces the focus to an InteractiveObject to be sure that CTRL+C/V works.
+		 */
+		private function focusChangeHandler(event:FocusEvent):void {
+			if(!(stage.focus is InteractiveObject)) {
+				stage.focus = _map;
+			}
 		}
 		
 //		private function clickHandler(event:MouseEvent):void {
