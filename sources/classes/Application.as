@@ -82,7 +82,7 @@ package  {
 		private function resetApplication(autoLog:Boolean = true):void {
 			_spin = addChild(new SpinGraphic()) as SpinGraphic;
 			_stats = new Stats();
-			//try catch block due to a eird thing with AIR 2.5.1 that doesn't likes UncaughtErroEvent class... yeehaa..
+			//try catch block due to a weird thing with AIR 2.5.1 that doesn't likes UncaughtErroEvent class... yeehaa..
 			try {
 				_exceptionView = addChild(new ExceptionView());
 			}catch(error:Error) {
