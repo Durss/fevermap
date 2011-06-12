@@ -126,7 +126,7 @@
 		<label code="renderModeDistance"><![CDATA[Distance]]></label>
 		<label code="renderModePopulation"><![CDATA[Joueurs <i>(<font color="#1B848F">Peuplé</font> - <font color="#509101">Vide</font>)</i>]]></label>
 		<label code="renderModeDifficulty"><![CDATA[Difficulté <i>(<font color="#DB0202">Dur</font> - <font color="#509101">Facile</font>)</i>]]></label>
-		<label code="renderModeFreedIslands"><![CDATA[Îles libérées <i>(<font color="#DB0202">?on libérée</font> - <font color="#509101">Libérée</font>)</i>]]></label>
+		<label code="renderModeFreedIslands"><![CDATA[Îles libérées <i>(<font color="#DB0202">Non libérée</font> - <font color="#509101">Libérée</font>)</i>]]></label>
 		<label code="toggleFullScreen"><![CDATA[Fullscreen ON/OFF]]></label>
 		<label code="autoExitFullScreenHelp"><![CDATA[La saisie de texte étant bloquée en mode fullscreen celui a été automatiquement désactivé.]]></label>
 		
