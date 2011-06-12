@@ -1,5 +1,4 @@
 package com.muxxu.fever.fevermap.components.tooltip.content.zone {
-
 	import by.blooddy.crypto.serialization.JSON;
 
 	import com.muxxu.fever.fevermap.components.button.FeverButton;
@@ -19,6 +18,8 @@ package com.muxxu.fever.fevermap.components.tooltip.content.zone {
 	import com.nurun.utils.math.MathUtils;
 	import com.nurun.utils.pos.PosUtils;
 
+	import flash.desktop.Clipboard;
+	import flash.desktop.ClipboardFormats;
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.display.DisplayObject;
@@ -413,6 +414,18 @@ package com.muxxu.fever.fevermap.components.tooltip.content.zone {
 			stage.addEventListener(MouseEvent.MOUSE_UP, mouseUpHandler);
 			stage.addEventListener(KeyboardEvent.KEY_UP, keyUpHandler);
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler);
+			stage.addEventListener(Event.PASTE, pastHandler);
+		}
+		
+		/**
+		 * Called when the user pasts something
+		 */
+		private function pastHandler(event:Event):void {
+			var m:Array = JSON.decode(Clipboard.generalClipboard.getData(ClipboardFormats.TEXT_FORMAT) as String);
+			if(m != null) {
+				_matrix = m;
+				renderGrid();
+			}
 		}
 		
 		/**
@@ -422,6 +435,8 @@ package com.muxxu.fever.fevermap.components.tooltip.content.zone {
 			if(event.keyCode == Keyboard.ESCAPE) {
 				_selectorIndex = _items.length - 4;
 				selectItem(_items[_selectorIndex]);
+			}else if(event.keyCode == Keyboard.C && event.ctrlKey) {
+				Clipboard.generalClipboard.setData(ClipboardFormats.TEXT_FORMAT, JSON.encode(_matrix));
 			}
 		}
 		
