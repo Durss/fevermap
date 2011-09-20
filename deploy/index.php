@@ -7,6 +7,11 @@
 	//Redirect the user if "www" are on the address. Prevents from SharedObject problems.
 	if (strpos($_SERVER["SERVER_NAME"], "www") > -1) {
 		header("location: http://fevermap.org");
+		die;
+	}
+	if (isset($_GET["act"]) && $_GET["act"] == "stats") {
+		header("location:stats.php");
+		die;
 	}
 	//header('Content-type: text/html; charset=iso-8859-1');
 	$pseudo = "goAwayDude!";
