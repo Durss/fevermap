@@ -1,35 +1,72 @@
 <?php
 	require_once('connect.php');
 	
-	$sql = 'SELECT COUNT(*) as `total` FROM `feverAreas`';
+	$sql = 'SELECT COUNT(*) as `total` FROM `feverAreas` WHERE `world`=0 ';
 	$results = $Mysql->TabResSQL($sql);
-	$submitted = $results[0]["total"];
+	$submitted0 = $results[0]["total"];
 	
-	$sql = 'SELECT COUNT(*) as `total` FROM `feverAreas` WHERE `cleaned`=1';
+	$sql = 'SELECT COUNT(*) as `total` FROM `feverAreas` WHERE `cleaned`=1 && `world`=0';
 	$results = $Mysql->TabResSQL($sql);
-	$cleaned = $results[0]["total"];
+	$cleaned0 = $results[0]["total"];
 	
-	$sql = 'SELECT COUNT(*) as `total` FROM `feverUsersActions`';
+	$sql = 'SELECT COUNT(*) as `total` FROM `feverUsersActions` WHERE `world`=0';
 	$results = $Mysql->TabResSQL($sql);
-	$revisions = $results[0]["total"];
+	$revisions0 = $results[0]["total"];
 	
-	$sql = 'SELECT COUNT(*) as `total` FROM `feverUsers`';
+	$sql = 'SELECT COUNT(*) as `total` FROM `feverUsers` WHERE `world`=0';
 	$results = $Mysql->TabResSQL($sql);
-	$users = $results[0]["total"];
+	$users0 = $results[0]["total"];
 	
-	$sql = 'SELECT COUNT(id) as `total`, uid FROM `feverUsersActions` GROUP BY `uid` ORDER BY `total` DESC LIMIT 0, 10';
+	$sql = 'SELECT COUNT(id) as `total`, `uid` FROM `feverUsersActions` WHERE `world`=0 GROUP BY `uid` ORDER BY `total` DESC LIMIT 0, 10';
 	$results = $Mysql->TabResSQL($sql);
-	$tot = count($results);
-	$adminsRank = "<table width='100%'>";
-	$adminsRank .= "	<tr bgcolor='#291612'><td>Pseudo</td><td>Révisions</td></tr>";
-	for($i=0; $i < $tot; $i++) {
+	$tot0 = count($results);
+	$adminsRank0 = "<table width='100%'>";
+	$adminsRank0 .= "	<tr bgcolor='#291612'><td>Pseudo</td><td>Révisions</td></tr>";
+	for($i=0; $i < $tot0; $i++) {
 		$sql2 = 'SELECT `pseudo` FROM feverUsers WHERE uid='.$results[$i]["uid"];
 		$results2 = $Mysql->TabResSQL($sql2);
-		$adminsRank .= "<tr>";
-		$adminsRank .= "<td>".$results2[0]["pseudo"]."</td><td>".$results[$i]["total"]."</td>";
-		$adminsRank .= "</tr>";
+		$adminsRank0 .= "<tr>";
+		$adminsRank0 .= "<td><a href='http://muxxu.com/u/".$results2[0]['pseudo']."' target='_blank'>".$results2[0]['pseudo']."</a></td><td>".$results[$i]["total"]."</td>";
+		$adminsRank0 .= "</tr>";
 	}
-	$adminsRank .= "</table>";
+	$adminsRank0 .= "</table>";
+	
+	
+	
+	
+	
+	$sql = 'SELECT COUNT(*) as `total` FROM `feverAreas` WHERE `world`=1 ';
+	$results = $Mysql->TabResSQL($sql);
+	$submitted1 = $results[0]["total"];
+	
+	$sql = 'SELECT COUNT(*) as `total` FROM `feverAreas` WHERE `cleaned`=1 && `world`=1';
+	$results = $Mysql->TabResSQL($sql);
+	$cleaned1 = $results[0]["total"];
+	
+	$sql = 'SELECT COUNT(*) as `total` FROM `feverUsersActions` WHERE `world`=1';
+	$results = $Mysql->TabResSQL($sql);
+	$revisions1 = $results[0]["total"];
+	
+	$sql = 'SELECT COUNT(*) as `total` FROM `feverUsers` WHERE `world`=1';
+	$results = $Mysql->TabResSQL($sql);
+	$users1 = $results[0]["total"];
+	
+	$sql = 'SELECT COUNT(id) as `total`, `uid` FROM `feverUsersActions` WHERE `world`=1 GROUP BY `uid` ORDER BY `total` DESC LIMIT 0, 10';
+	$results = $Mysql->TabResSQL($sql);
+	$tot1 = count($results);
+	$adminsRank1 = "<table width='100%'>";
+	$adminsRank1 .= "	<tr bgcolor='#291612'><td>Pseudo</td><td>Révisions</td></tr>";
+	for($i=0; $i < $tot1; $i++) {
+		$sql2 = 'SELECT `pseudo` FROM feverUsers WHERE uid='.$results[$i]["uid"];
+		$results2 = $Mysql->TabResSQL($sql2);
+		$adminsRank1 .= "<tr>";
+		$adminsRank1 .= "<td><a href='http://muxxu.com/u/".$results2[0]['pseudo']."' target='_blank'>".$results2[0]['pseudo']."</a></td><td>".$results[$i]["total"]."</td>";
+		$adminsRank1 .= "</tr>";
+	}
+	$adminsRank1 .= "</table>";
+	
+	
+	
 	
 	
 	$sql = 'SELECT `pseudo` FROM `feverUsers` WHERE `rights`=1';
@@ -118,13 +155,22 @@
     <body>
 		<center>
 			<br />
-			<div id="title">Statistiques en vrac</div>
-			<div id="section"><b>Îles repertoriées :</b> <?php echo $submitted." (".round(($submitted)/100)."%)"; ?></div>
-			<div id="section"><b>Îles Nettoyées :</b> <?php echo$cleaned." (".round(($cleaned)/100)."%)"; ?></div>
-			<div id="section"><b>Révisions effectuées :</b> <?php echo $revisions; ?></div>
-			<div id="section"><b>Utilisateurs :</b> <?php echo $users; ?></div>
-			<div id="section"><b>Top admins :</b> <?php echo $adminsRank; ?></div>
-			<div id="section"><b>Admins :</b> <?php echo $admins; ?></div>
+			<div id="title">Statistiques Gonkrogme</div>
+			<div id="section"><b>Îles repertoriées :</b> <?php echo $submitted0." (".floor(($submitted0)/100)."%)"; ?></div>
+			<div id="section"><b>Îles Nettoyées :</b> <?php echo$cleaned0." (".floor(($cleaned0)/100)."%)"; ?></div>
+			<div id="section"><b>Révisions effectuées :</b> <?php echo $revisions0; ?></div>
+			<div id="section"><b>Utilisateurs :</b> <?php echo $users0; ?></div>
+			<div id="section"><b>Top admins :</b> <?php echo $adminsRank0; ?></div>
+			<br />
+			<div id="title">Statistiques Sultura</div>
+			<div id="section"><b>Îles repertoriées :</b> <?php echo $submitted1." (".floor(($submitted1)/100)."%)"; ?></div>
+			<div id="section"><b>Îles Nettoyées :</b> <?php echo $cleaned1." (".floor(($cleaned1)/100)."%)"; ?></div>
+			<div id="section"><b>Révisions effectuées :</b> <?php echo $revisions1; ?></div>
+			<div id="section"><b>Utilisateurs :</b> <?php echo $users1; ?></div>
+			<div id="section"><b>Top admins :</b> <?php echo $adminsRank1; ?></div>
+			<br />
+			<div id="title">Admins</div>
+			<div id="section"><b> <?php echo $admins; ?></b></div>
 		</center>
 	</body>
 </html>

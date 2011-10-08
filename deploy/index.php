@@ -28,7 +28,8 @@
 	 * Checks if a user is on the authorized groups.
 	 */
 	function isUserOnGroup($pseudo, $url) {
-		if (strtolower($pseudo) == "eole" || strtolower($pseudo) == "newsunshine") return true;
+		if (strtolower($pseudo) == "durss" || strtolower($pseudo) == "aerynsun" || strtolower($pseudo) == "hyoga") return true;
+		return false;
 		
 		$handle = fopen($url, "rb");
 		$content = '';
@@ -184,6 +185,11 @@
 
 <?php
 	} else {
+		if (isset($_GET["lang"]) && file_exists("xml/labels_".strtolower($_GET["lang"]).".xml")) {
+			$lang = $_GET["lang"];
+		}else {
+			$lang = "fr";
+		}
 ?>
 		<div id="content">
 			<p>In order to view this page you need JavaScript and Flash Player 10.1+ support!</p>
@@ -191,11 +197,12 @@
 		
 		<script type="text/javascript">
 			// <![CDATA[
-			var so = new SWFObject('swf/FeverMap.swf?v=45', 'content', '100%', '100%', '10.1', '#412720');
+			var so = new SWFObject('swf/FeverMap.swf?v=50', 'content', '100%', '100%', '10.1', '#412720');
 			so.useExpressInstall('swf/expressinstall.swf');
 			so.addParam('menu', 'false');
 			so.addParam('allowFullScreen', 'true');
-			so.addVariable("configXml", "./config.php?lang=<?php echo $_GET["lang"]; ?>");
+			so.addVariable("configXml", "./xml/config.xml?v=2");
+			so.addVariable("lang", "<?php echo $lang; ?>");
 <?php
 	if (isset($_GET["uid"], $_GET["pubkey"])) {
 		echo "\t\t\tso.addVariable('uid', '".htmlentities($_GET["uid"])."');\r\n";
