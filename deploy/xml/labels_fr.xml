@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<labels>
+		<label code="menuFilters"><![CDATA[Filtres]]></label>
+		<label code="menuSearch"><![CDATA[Recherche]]></label>
+		<label code="menuNavigation"><![CDATA[Navigation]]></label>
+		<label code="menuTracker"><![CDATA[Tracker]]></label>
+		<label code="menuLogout"><![CDATA[Log-out]]></label>
+		
+		<label code="shareIsland"><![CDATA[Lien direct]]></label>
+		
+		<label code="thanks"><![CDATA[Application grâcieusement hébergée par]]></label>
+		<label code="initFaillure"><![CDATA[Une erreur s'est produite lors de l'initialisation de l'application.<br />Vérifiez que votre connexion est active.<br />Détails de l'erreur :]]></label>
+		
+		<label code="countdownTitle"><![CDATA[Sauvegarde dans :]]></label>
+		<label code="countedownDetails"><![CDATA[<p align="center">Sauvegarde vos marquages<br />et configurations<br />à la fin du délais</p>]]></label>
+		
+		<label code="mapEngineGotoSubmit"><![CDATA[GO]]></label>
+		<label code="mapEngineAreaCoords"><![CDATA[[${x}][${y}]]]></label>
+		
+		<label code="submitForm"><![CDATA[Valider]]></label>
+		<label code="submitFormError"><![CDATA[<font color="#cc0000">ERREUR</font>]]></label>
+		<label code="createMapEntry"><![CDATA[Créer une entrée]]></label>
+		<label code="updateMapEntry"><![CDATA[Mettre à jour]]></label>
+		<label code="flagAreaAsVisited"><![CDATA[Déjà visitée]]></label>
+		<label code="flagAreaAsNonVisited"><![CDATA[Pas visitée]]></label>
+		<label code="flagAreaAsCleaned"><![CDATA[Nettoyée]]></label>
+		<label code="flagAreaAsNonCleaned"><![CDATA[Non nettoyée]]></label>
+		<label code="flagAreaImHere"><![CDATA[Je suis là]]></label>
+		<label code="flagAreaWhosThere"><![CDATA[Qui est là?]]></label>
+		<label code="flagAreaFinPath"><![CDATA[Comment aller ici?]]></label>
+		<label code="touchedObjects"><![CDATA[Cochez les objets ramassés :]]></label>
+		<label code="tooltipAsterisk"><![CDATA[(click)]]></label>
+		<label code="mapEditEnemies"><![CDATA[Ennemis :]]></label>
+		<label code="mapEditMultipleObjects"><![CDATA[Objets multiples :]]></label>
+		<label code="mapEditUniqueObjects"><![CDATA[Objets uniques :]]></label>
+		<label code="mapEditSpecialObjects"><![CDATA[Objets spéciaux :]]></label>
+		<label code="mapEditOther"><![CDATA[Autres :]]></label>
+		<label code="mapEditReset"><![CDATA[Reset]]></label>
+		<label code="mapEditCopy"><![CDATA[Décalquer]]></label>
+		<label code="mapEditDirection"><![CDATA[Directions disponibles :]]></label>
+		
+		<label code="loginFormTitle"><![CDATA[Entrez vos identifiants :]]></label>
+		<label code="loginFormLogin"><![CDATA[UID (<a href="http://muxxu.com/a/fevermap/?act=ids" target="_blank" class="link"><font color="#FF8000">?</font></a>) :]]></label>
+		<label code="loginFormPassword"><![CDATA[PUBKEY (<a href="http://muxxu.com/a/fevermap/?act=ids" target="_blank" class="link"><font color="#FF8000">?</font></a>) :]]></label>
+		<label code="loginFormHelp"><![CDATA[<a href="http://muxxu.com/a/fevermap/?act=ids" target="_blank" class="link"><font color="#FF8000">Connaître mes identifiants</font></a>]]></label>
+		<label code="loginFormSubmit"><![CDATA[Log In]]></label>
+		<label code="loginFormRememberMe"><![CDATA[Conserver mes identifiants]]></label>
+		<label code="loginError1"><![CDATA[Error #2 : Erreur SQL]]></label>
+		<label code="loginError2"><![CDATA[Error #2 : Paramètres de requête manquants.]]></label>
+		<label code="loginError3"><![CDATA[Identifiants incorrects]]></label>
+		<label code="loginError100"><![CDATA[Error #2 : Données retournées invalides.]]></label>
+		<label code="loginError101"><![CDATA[Error #2 : Erreur de connexion.]]></label>
+		
+		<label code="loadAreaError1"><![CDATA[Error #3 : Erreur SQL]]></label>
+		<label code="loadAreaError2"><![CDATA[Error #3 : Paramètres de requête manquants.]]></label>
+		<label code="loadAreaError100"><![CDATA[Error #3 : Données retournées invalides.]]></label>
+		<label code="loadAreaError101"><![CDATA[Error #3 : Erreur de connexion.]]></label>
+		
+		<label code="addAreaError1"><![CDATA[Error #4 : Erreur SQL (ADD)]]></label>
+		<label code="addAreaError2"><![CDATA[Error #4 : Erreur SQL (UPDATE)]]></label>
+		<label code="addAreaError3"><![CDATA[Error #4 : Paramètres de requête manquants.]]></label>
+		<label code="addAreaError4"><![CDATA[Error #4 : Unable to create backup.]]></label>
+		<label code="addAreaError100"><![CDATA[Error #4 : Données retournées invalides.]]></label>
+		<label code="addAreaError101"><![CDATA[Error #4 : Erreur de connexion.]]></label>
+		
+		<label code="loadMessageError1"><![CDATA[Error #5 : Erreur SQL]]></label>
+		<label code="loadMessageError2"><![CDATA[Error #5 : Paramètres de requête manquants.]]></label>
+		<label code="loadMessageError100"><![CDATA[Error #5 : Données retournées invalides.]]></label>
+		<label code="loadMessageError101"><![CDATA[Error #5 : Erreur de connexion.]]></label>
+		
+		<label code="dataDownloadError1"><![CDATA[Error #6 : Erreur SQL]]></label>
+		<label code="dataDownloadError100"><![CDATA[Error #6 : Données retournées invalides.]]></label>
+		<label code="dataDownloadError101"><![CDATA[Error #6 : Erreur de connexion.]]></label>
+		
+		<label code="dataUploadError1"><![CDATA[Error #7 : Erreur SQL]]></label>
+		<label code="dataUploadError2"><![CDATA[Error #7 : Paramètres de requête manquants.]]></label>
+		<label code="dataUploadError100"><![CDATA[Error #7 : Données retournées invalides.]]></label>
+		<label code="dataUploadError101"><![CDATA[Error #7 : Erreur de connexion.]]></label>
+		
+		<label code="addMessageError1"><![CDATA[Error #8 : Erreur SQL]]></label>
+		<label code="addMessageError2"><![CDATA[Error #8 : Paramètres de requête manquants.]]></label>
+		<label code="addMessageError100"><![CDATA[Error #8 : Données retournées invalides.]]></label>
+		<label code="addMessageError101"><![CDATA[Error #8 : Erreur de connexion.]]></label>
+		
+		<label code="getUsersOnError1"><![CDATA[Error #9 : Erreur SQL]]></label>
+		<label code="getUsersOnError2"><![CDATA[Error #9 : Paramètres de requête manquants.]]></label>
+		<label code="getUsersOnError100"><![CDATA[Error #9 : Données retournées invalides.]]></label>
+		<label code="getUsersOnError101"><![CDATA[Error #9 : Erreur de connexion.]]></label>
+		
+		<label code="reportMessageError1"><![CDATA[Error #9 : Erreur SQL]]></label>
+		<label code="reportMessageError2"><![CDATA[Error #9 : Paramètres de requête manquants.]]></label>
+		<label code="reportMessageError100"><![CDATA[Error #9 : Données retournées invalides.]]></label>
+		<label code="reportMessageError101"><![CDATA[Error #9 : Erreur de connexion.]]></label>
+		
+		<label code="positionUpdateError1"><![CDATA[Error #1 : Erreur SQL]]></label>
+		<label code="positionUpdateError2"><![CDATA[Error #1 : Paramètres de requête manquants.]]></label>
+		<label code="positionUpdateError100"><![CDATA[Error #1 : Données retournées invalides.]]></label>
+		<label code="positionUpdateError101"><![CDATA[Error #1 : Erreur de connexion.]]></label>
+		
+		<label code="error400"><![CDATA[Vous devez être connecté pour effectuer cette action.<br />Si le problème persiste essayez de vous connecter à l'application directement :<br /><a href="http://fevermap.org" class="link">http://fevermap.org</a>]]></label>
+		<label code="error401"><![CDATA[Request token has expired.]]></label>
+		<label code="error402"><![CDATA[Votre compte a été bloqué suite à un abus.]]></label>
+		
+		<label code="feedback"><![CDATA[FEEDBACK]]></label>
+		
+		<label code="selectorReset"><![CDATA[RESET]]></label>
+		
+		<label code="revisionsTitle"><![CDATA[Révision(s) éffectuée(s) sur cette île :]]></label>
+		<label code="revisionsInfos"><![CDATA[Révision <b>${nbr}/${tot}</b> par <b>${user}</b><br />Le <b>${date}</b>]]></label>
+		<label code="revisionsEmpty"><![CDATA[Aucune révision disponible]]></label>
+		
+		<label code="spoilObjects"><![CDATA[Afficher les objets]]></label>
+		<label code="spoilGlow"><![CDATA[Montrer les îles contenant des objets]]></label>
+		<label code="diffObjects"><![CDATA[Différencier objets uniques/multiples<br />(<font color="#ff0000">Unique</font> , <font color="#0066ff">Multiple</font> , <font color="#FF99FF">U & M</font> , <font color="#FFFFFF">Inconnu</font>)]]></label>
+		<label code="showGotObjects"><![CDATA[Afficher les objets ramassés.]]></label>
+		<label code="renderModeTitle"><![CDATA[Mode de rendu de la carte :]]></label>
+		<label code="renderModeClassic"><![CDATA[Normal]]></label>
+		<label code="renderModePath"><![CDATA[Chemin]]></label>
+		<label code="renderModeDistance"><![CDATA[Distance]]></label>
+		<label code="renderModePopulation"><![CDATA[Joueurs <i>(<font color="#1B848F">Peuplé</font> - <font color="#509101">Vide</font>)</i>]]></label>
+		<label code="renderModeDifficulty"><![CDATA[Difficulté <i>(<font color="#DB0202">Dur</font> - <font color="#509101">Facile</font>)</i>]]></label>
+		<label code="renderModeFreedIslands"><![CDATA[Îles libérées <i>(<font color="#DB0202">Non libérée</font> - <font color="#509101">Libérée</font>)</i>]]></label>
+		<label code="toggleFullScreen"><![CDATA[Fullscreen ON/OFF]]></label>
+		<label code="autoExitFullScreenHelp"><![CDATA[La saisie de texte étant bloquée en mode fullscreen celui a été automatiquement désactivé.]]></label>
+		
+		<label code="needUpdateAir"><![CDATA[Une mise à jour de l'application est nécessaire pour continuer à l'utiliser!<br /><a href="http://www.fevermap.org/FeverMap.air" class="link">- Télécharger la mise à jour -</a>]]></label>
+		<label code="needUpdateSwf"><![CDATA[Mise à jour disponible.<br /><br />Si cette nouille d'application n'arrive pas<br />à recharger la page, faites-le pour elle :D<br /><br />Et si ça tourne lamentablement en boucle,<br />videz votre cache :(]]></label>
+		
+		<label code="itemName1"><![CDATA[Camembeurk]]></label>
+		<label code="itemName2"><![CDATA[Vol-o-vent]]></label>
+		<label code="itemName3"><![CDATA[Burilame]]></label>
+		<label code="itemName4"><![CDATA[Fulgo]]></label>
+		<label code="itemName5"><![CDATA[Ignik]]></label>
+		<label code="itemName6"><![CDATA[Rasen]]></label>
+		<label code="itemName7"><![CDATA[Clé]]></label>
+		<label code="itemName8"><![CDATA[+5 parties]]></label>
+		<label code="itemName9"><![CDATA[+20 parties]]></label>
+		<label code="itemName10"><![CDATA[Quart de coeur]]></label>
+		<label code="itemName11"><![CDATA[Cartouche FeverX]]></label>
+		<label code="itemName12"><![CDATA[???]]></label>
+		<label code="itemName13"><![CDATA[Coktail<br/>(température -10°)]]></label>
+		<label code="itemName14"><![CDATA[Grimoire<br/>(interdit le jeu de son choix)]]></label>
+		<label code="itemName15"><![CDATA[Chaussures<br/>(vitesse x2)]]></label>
+		<label code="itemName16"><![CDATA[Miroir<br/>(repousse les gorgognes)]]></label>
+		<label code="itemName17"><![CDATA[Treffle]]></label>
+		<label code="itemName18"><![CDATA[Poupée vaudou<br/>(les monstres perdent 1 vie)]]></label>
+		<label code="itemName19"><![CDATA[Masque vaudou]]></label>
+		<label code="itemName20"><![CDATA[Baguette<br/>(permet d'ouvrir les coffres verts)]]></label>
+		<label code="itemName21"><![CDATA[Lunettes<br/>(dévoilent les 8 1er jeu du monstre le plus proche)]]></label>
+		<label code="itemName22"><![CDATA[Radar]]></label>
+		<label code="itemName23"><![CDATA[Prisme<br/>(1 glaçon = 3 arcs)]]></label>
+		<label code="itemName24"><![CDATA[FeverX]]></label>
+		<label code="itemName25"><![CDATA[Parapluie<br/>(+1 arc / jour)]]></label>
+		<label code="itemName26"><![CDATA[Dé]]></label>
+		<label code="itemName27"><![CDATA[Moulin<br/>(la température n'augmente pas en cas de perte)]]></label>
+		<label code="itemName28"><![CDATA[Glace chimique<br />(+1 glaçon / jour)]]></label>
+		<label code="itemName29"><![CDATA[Sablier<br/>(+25% de temps sur les jeux à reflexion)]]></label>
+		<label code="itemName30"><![CDATA[ChromaX<br/>(1 partie = 1 arc)]]></label>
+		<label code="itemName31"><![CDATA[Bague<br/>(les monstres brutaux vous infligent -1 dégât)]]></label>
+		<label code="itemName32"><![CDATA[Fourchette<br />(+10% de chance d'infliger 2 dégâts)]]></label>
+		<label code="itemName33"><![CDATA[Fil d'Ariane<br />(téléporte a la dernière statue touchée)]]></label>
+		<label code="itemName34"><![CDATA[Rune Ini]]></label>
+		<label code="itemName35"><![CDATA[Rune Sed]]></label>
+		<label code="itemName36"><![CDATA[Rune Aarg]]></label>
+		<label code="itemName37"><![CDATA[Rune Olh]]></label>
+		<label code="itemName38"><![CDATA[Rune Al]]></label>
+		<label code="itemName39"><![CDATA[Rune Laf]]></label>
+		<label code="itemName40"><![CDATA[Rune Hep]]></label>
+		<label code="itemName41"><![CDATA[Coffre rouge]]></label>
+		<label code="itemName42"><![CDATA[Coffre vert]]></label>
+		<label code="itemName43"><![CDATA[Coffre bleu]]></label>
+		<label code="itemName44"><![CDATA[Statue]]></label>
+		<label code="itemName45"><![CDATA[Portail]]></label>
+		
+		<label code="menuSearchObjectsTitle"><![CDATA[Cochez les objets à rechercher :]]></label>
+		<label code="menuSearchPathTitle"><![CDATA[Rechercher le chemin le plus court :]]></label>
+		<label code="menuSearchPathStartLabel"><![CDATA[Départ :]]></label>
+		<label code="menuSearchPathEndLabel"><![CDATA[Arrivée :]]></label>
+		<label code="menuSearchPathSubmit"><![CDATA[Chercher]]></label>
+		<label code="menuSearchPathClear"><![CDATA[Effacer le chemin]]></label>
+		<label code="menuSearchPathNoResult"><![CDATA[Aucun chemin n'a été trouvé]]></label>
+		<label code="menuSearchUserTitle"><![CDATA[Cherchez où se trouvent des joueurs :]]></label>
+		<label code="menuSearchUserNameDetails"><![CDATA[Entrez un pseudo ou un ID d'utilisateur]]></label>
+		<label code="menuSearchUserZoneDetails"><![CDATA[Qui se trouve en [x][y] ?]]></label>
+		<label code="menuSearchUserSubmit"><![CDATA[Rechercher]]></label>
+		<label code="menuSearchResultTitle"><![CDATA[Joueurs correspondants à votre recherche]]></label>
+		<label code="menuSearchNoResults"><![CDATA[Aucun résultat.]]></label>
+		
+		<label code="menuNavTitle"><![CDATA[Aller en :]]></label>
+		<label code="menuNavCenterPousty"><![CDATA[Centrer sur Pousty]]></label>
+		
+		<label code="menuTrackTitle"><![CDATA[Dernières modifications effectuées :]]></label>
+		<label code="menuTrackItemTitle"><![CDATA[[${X}][${Y}]]]></label>
+		<label code="menuTrackItemInfos"><![CDATA[<b>${PSEUDO}</b>]]></label>
+		<label code="menuTrackItemInfosBefore"><![CDATA[...avant...]]></label>
+		
+		<label code="menuTrackItemCaption1"><![CDATA[Sol]]></label>
+		<label code="menuTrackItemCaption2"><![CDATA[Objet/coffre]]></label>
+		<label code="menuTrackItemCaption3"><![CDATA[Monstre]]></label>
+		<label code="menuTrackItemCaption4"><![CDATA[Arc en ciel]]></label>
+		<label code="menuTrackItemCaption5"><![CDATA[Mur]]></label>
+		<label code="menuTrackItemNext"><![CDATA[Suivants]]></label>
+		<label code="menuTrackItemPrev"><![CDATA[Précédents]]></label>
+		
+		<label code="messageCensored"><![CDATA[- Message modéré -]]></label>
+		<label code="messageReport"><![CDATA[Report]]></label>
+		<label code="menuMessageTitle"><![CDATA[Un mot doux? Une déclaration d'amour?<br />Une insulte? Défoulez-vous!<br /><span class="menuContentTitleSmall">(enfin pas trop non plus...)</span>]]></label>
+		<label code="menuMessageEntryTitle"><![CDATA[Par <b>${PSEUDO}</b> le <b>${DATE}</b> :]]></label>
+		<label code="menuMessageAddTitle"><![CDATA[Ecrivez votre commentaire et choisissez combien d'amour il contient à l'aide des boutons colorés :<br/> <span class="menuContentTitleSmall">( <font color="#DB3E3E">Je te déteste, sale @&#$!</font> ,   <font color="#80D147">Je t'aime tout beaucoup fort &lt;3 ! </font>)</span>]]></label>
+		<label code="menuMessageSubmit"><![CDATA[Envoyer]]></label>
+		<label code="menuMessageTooShort"><![CDATA[ Un petit effort voyons... au moins 10 caractères!]]></label>
+		
+		<label code="initDataTitle"><![CDATA[C'est la première fois que vous utilisez l'application sur cet ordinateur et avec ce navigateur :]]></label>
+		<label code="initDataOptionsTitle"><![CDATA[Pré-configurez la carte afin de personnaliser le niveau de spoil :]]></label>
+		<label code="initDataDescription"><![CDATA[<span class="initInfo">Des marquages <i>(îles visitées / libérées, objets touchés)</i> ont été détectés!</span><br />A partir de maintenant les marquages ne sont plus stockés dans les cookies de votre navigateur mais sur le serveur.<br /><b>Souhaitez-vous enregistrer les marquages présentement détéctés sur le serveur?</b>]]></label>
+		<label code="initDataAccept"><![CDATA[Oui]]></label>
+		<label code="initDataDecline"><![CDATA[Non]]></label>
+		<label code="initSubmit"><![CDATA[Continuer]]></label>
+		<label code="initDownload"><![CDATA[Télécharger mes marquages en cas de cafouille <i>(conseillé)</i>]]></label>
+		
+		<label code="help"><![CDATA[  Cette application ayant été développée par les pieds d'un manchot portant des lunettes 3D rouges et bleu, le tout, uniquement les soirs de pleine lune, si vous rencontrez des soucis, alors c'est bien normal! Dans ce cas, n'hésitez surtout pas à m'insulter au travers du menu <b>Messages</b> juste à côté :].<br />  Si en revanche vous avez prit un sévère coup de lunette de toilette derrière la nuque et que par conséquent il vous viendrait à l'idée de vouloir me dire un mot doux, le même menu vous permettra de le faire!<br /><br />  Les droits d'édition de la carte sont donnés par <a href="http://muxxu.com/msg/write?user=durss" class="legalsLink" target="_blank">Durss</a> à un nombre restreint d'utilisateurs. Si vous avez au moins <b><font color="#FF0000">6000pts</font></b> (fever) vous pouvez lui demander d'avoir les droits d'admin.<br /><br />  L'hébergement ainsi que le nom de domaine de cette application sont offerts par <a href="http://www.motion-twin.com/" class="legalsLink">Motion-Twin</a> et je leur en suis très reconnaissant <i>(comme en atteste l'encart kawaï en bas à droite)</i>.<br /><br />  Pour toute suggestion ou rapport de bug, merci de passer par l'onglet <b>FeedBack</b> en bas de l'application.]]></label>
+		<label code="legals"><![CDATA[Ce site n'est pas affilié à <a href="http://www.motion-twin.com/" class="legalsLink">Motion-Twin</a>. Il a été développé dans un but non-lucratif.<br />Les images et textes provenant des jeux de <a href="http://www.motion-twin.com/" class="legalsLink">Motion-Twin</a> sont soumis au droit d'auteur copyright © 2009 <i>(<a href="http://support.motion-twin.com/cgu" class="legalsLinkSmall">conditions générales d'utilisation</a>)</i><br />L'auteur du site s'engage à retirer les images et textes provenant des sites de <a href="http://www.motion-twin.com/" class="legalsLink">Motion-Twin</a> sur simple demande.]]></label>
+		
+		<label code="menu1"><![CDATA[Navigation]]></label>
+		<label code="menu2"><![CDATA[Options]]></label>
+		<label code="menu3"><![CDATA[Recherche]]></label>
+		<label code="menu4"><![CDATA[Tracker]]></label>
+		<label code="menu5"><![CDATA[Messages]]></label>
+		<label code="menu6"><![CDATA[Zoom]]></label>
+		<label code="menu7"><![CDATA[?]]></label>
+		<label code="menu8"><![CDATA[Log-out]]></label>
+		<label code="menu9"><![CDATA[Monde]]></label>
+		
+		<label code="world1"><![CDATA[<font color="#88CC77">Gonkrogme</font>]]></label>
+		<label code="world2"><![CDATA[<font color="#DD6666">Sultura</font>]]></label>
+	</labels>
+</root>

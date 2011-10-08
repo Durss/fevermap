@@ -1,19 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <root>
-	<styleSheets>
-		<styleSheet><![CDATA[css/flashstyles.css?v=3]]></styleSheet>
-	</styleSheets>
-	
-	<fonts>
-		<font><![CDATA[swf/fonts/fonts.swf?v=3]]></font>
-	</fonts>
-	
 	<labels>
 		<label code="menuFilters"><![CDATA[Filters]]></label>
 		<label code="menuSearch"><![CDATA[Search]]></label>
 		<label code="menuNavigation"><![CDATA[Navigation]]></label>
 		<label code="menuTracker"><![CDATA[Tracker]]></label>
 		<label code="menuLogout"><![CDATA[Log-out]]></label>
+		
+		<label code="shareIsland"><![CDATA[Direct link]]></label>
 		
 		<label code="thanks"><![CDATA[Application gratefully hosted by]]></label>
 		<label code="initFaillure"><![CDATA[An error has occured while the application was initializing.<br />Please make sure your internet connection is active.<br />Error details :]]></label>
@@ -169,10 +163,10 @@
 		<label code="itemName34"><![CDATA[Rune Ini]]></label>
 		<label code="itemName35"><![CDATA[Rune Sed]]></label>
 		<label code="itemName36"><![CDATA[Rune Aarg]]></label>
-		<label code="itemName37"><![CDATA[Rune ???]]></label>
-		<label code="itemName38"><![CDATA[Rune ???]]></label>
+		<label code="itemName37"><![CDATA[Rune Olh]]></label>
+		<label code="itemName38"><![CDATA[Rune Al]]></label>
 		<label code="itemName39"><![CDATA[Rune Laf]]></label>
-		<label code="itemName40"><![CDATA[Rune ???]]></label>
+		<label code="itemName40"><![CDATA[Rune Hep]]></label>
 		<label code="itemName41"><![CDATA[Red chest]]></label>
 		<label code="itemName42"><![CDATA[Green chest]]></label>
 		<label code="itemName43"><![CDATA[Blue chest]]></label>
@@ -225,48 +219,19 @@
 		
 		<label code="help"><![CDATA[  If you like or hate this applicaiton please let me know throught the <b>"Message"</b> panel :)!<br /><br />  Edition rights are given by <a href="http://muxxu.com/msg/write?user=durss" class="legalsLink" target="_blank">Durss</a> but only to a few people. You can ask him editing rights, but he will only consider you  if you have at least <b><font color="#FF0000">6000pts</font></b> in Fever.<br /><br />  <a href="http://www.motion-twin.com/" class="legalsLink">Motion-Twin</a> is currently hosting the site and domain name, and I am very thankful for that <i>(as you can see with the cute button in the bottom-right ^^)</i>.<br /><br />  Thanks to <a href="http://muxxu.com/u/ANS1" class="legalsLink">ANS1</a> for helping with the English translation.<br /><br />  For any suggestion, or to report a bug, please use the <b>FeedBack</b> button at the bottom of the screen.]]></label>
 		<label code="legals"><![CDATA[Most graphics & design (c) 2009 <a href="http://www.motion-twin.com/" class="legalsLink">Motion-Twin</a> all right reserved.]]></label>
+		
+		<label code="menu1"><![CDATA[Navigation]]></label>
+		<label code="menu2"><![CDATA[Options]]></label>
+		<label code="menu3"><![CDATA[Search]]></label>
+		<label code="menu4"><![CDATA[Tracker]]></label>
+		<label code="menu5"><![CDATA[Messages]]></label>
+		<label code="menu6"><![CDATA[Zoom]]></label>
+		<label code="menu7"><![CDATA[?]]></label>
+		<label code="menu8"><![CDATA[Log-out]]></label>
+		<label code="menu9"><![CDATA[World]]></label>
+		
+		<label code="world1"><![CDATA[<font color="#88CC77">Gonkrogme</font>]]></label>
+		<label code="world2"><![CDATA[<font color="#DD6666">Sultura</font>]]></label>
 	</labels>
-	
-	<vars>
-		<var code="minReportModerated">5</var>
-		<var code="langs">
-			<lang id="fr"><![CDATA[FR]]></lang>
-			<lang id="en"><![CDATA[EN]]></lang>
-			<lang id="es"><![CDATA[ES]]></lang>
-		</var>
-		<var code="menus">
-			<menu content="com.muxxu.fever.fevermap.components.menu.nav.MenuNavigation" icon="com.muxxu.fever.graphics.Item15Graphic"><![CDATA[Navigation]]></menu>
-			<menu content="com.muxxu.fever.fevermap.components.menu.filters.MenuFilters" icon="com.muxxu.fever.graphics.Item30Graphic"><![CDATA[Options]]></menu>
-			<menu content="com.muxxu.fever.fevermap.components.menu.search.MenuSearch" icon="com.muxxu.fever.graphics.Item22Graphic"><![CDATA[Search]]></menu>
-			<menu content="com.muxxu.fever.fevermap.components.menu.tracker.MenuTracker" icon="com.muxxu.fever.graphics.Item24Graphic"><![CDATA[Tracker]]></menu>
-			<menu content="com.muxxu.fever.fevermap.components.menu.message.MenuMessage" icon="com.muxxu.fever.graphics.Item14Graphic"><![CDATA[Messages]]></menu>
-			<menu content="com.muxxu.fever.fevermap.components.menu.zoom.MenuZoom" icon="com.muxxu.fever.graphics.Item16Graphic"><![CDATA[Zoom]]></menu>
-			<menu content="com.muxxu.fever.fevermap.components.menu.l10n.MenuLangSelector" icon="com.muxxu.fever.graphics.WorldMapGraphic"></menu>
-			<menu content="com.muxxu.fever.fevermap.components.menu.help.MenuHelp" icon="com.muxxu.fever.graphics.Item37Graphic"><![CDATA[?]]></menu>
-			<menu icon="com.muxxu.fever.graphics.Item7Graphic" special="logout"><![CDATA[Log-out]]></menu>
-		</var>
-	</vars>
-	
-	<paths>
-		<path code="feedbackUrl"><![CDATA[http://fevermap.idea.informer.com/]]></path>
-		<path code="profileURL"><![CDATA[http://muxxu.com/user/${UID}]]></path>
-		<path code="reportMessage"><![CDATA[${server}ws/reportMessage?SESSID={v_SESSID}]]></path>
-		<path code="login"><![CDATA[${server}ws/login.php]]></path>
-		<path code="addArea"><![CDATA[${server}ws/addArea.php?SESSID={v_SESSID}]]></path>
-		<path code="loadArea"><![CDATA[${server}ws/loadArea.php?SESSID={v_SESSID}]]></path>
-		<path code="getRevisions"><![CDATA[${server}ws/getRevisions.php?SESSID={v_SESSID}]]></path>
-		<path code="setPosition"><![CDATA[${server}ws/setPosition.php?SESSID={v_SESSID}]]></path>
-		<path code="uploadData"><![CDATA[${server}ws/uploadData.php?SESSID={v_SESSID}]]></path>
-		<path code="downloadData"><![CDATA[${server}ws/downloadData.php?SESSID={v_SESSID}]]></path>
-		<path code="addMessage"><![CDATA[${server}ws/addMessage.php?SESSID={v_SESSID}]]></path>
-		<path code="getMessages"><![CDATA[${server}ws/getMessages.php?SESSID={v_SESSID}]]></path>
-		<path code="getUsersOn"><![CDATA[${server}ws/getUsersOn.php?SESSID={v_SESSID}]]></path>
-		<path code="getToken"><![CDATA[${server}ws/getToken.php?SESSID={v_SESSID}]]></path>
-		<path code="changeLang"><![CDATA[?act=lang_${CODE}]]></path>
-		<path code="serverOnline"><![CDATA[http://fevermap.org/]]></path>
-		<path code="serverOffline"><![CDATA[http://localhost/muxxu/fever/apps/fevermap/]]></path>
-	</paths>
-	
-	<dependencies />
 	
 </root>
