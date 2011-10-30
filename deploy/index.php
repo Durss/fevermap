@@ -17,10 +17,11 @@
 	$pseudo = "goAwayDude!";
 	if(isset($_GET['uid'], $_GET['pubkey'])) {
 		$url = "http://muxxu.com/app/xml?app=fevermap&xml=user&id=".$_GET['uid']."&key=".md5("d1268d376ba9e54593b4ca03c756f1a1" . $_GET["pubkey"]);
-		$xml = file_get_contents($url);
+		$xml = simplexml_load_file($url);
 		preg_match('/name="(.*?)"/', $xml, $matches); //*? = quantificateur non gourmand
-		if (strpos($xml, "<error>") === false) {
+		if ($xml->getName() != "error") {
 			$pseudo	= $matches[1];
+			$_GET["lang"] = $xml->attributes()->lang;
 		}
 	}
 	
@@ -28,7 +29,7 @@
 	 * Checks if a user is on the authorized groups.
 	 */
 	function isUserOnGroup($pseudo, $url) {
-		if (strtolower($pseudo) == "durss" || strtolower($pseudo) == "aerynsun" || strtolower($pseudo) == "hyoga") return true;
+		if (strtolower($pseudo) == "durss") return true;
 		return false;
 		
 		$handle = fopen($url, "rb");
@@ -197,11 +198,11 @@
 		
 		<script type="text/javascript">
 			// <![CDATA[
-			var so = new SWFObject('swf/FeverMap.swf?v=50', 'content', '100%', '100%', '10.1', '#412720');
+			var so = new SWFObject('swf/FeverMap.swf?v=52', 'content', '100%', '100%', '10.1', '#412720');
 			so.useExpressInstall('swf/expressinstall.swf');
 			so.addParam('menu', 'false');
 			so.addParam('allowFullScreen', 'true');
-			so.addVariable("configXml", "./xml/config.xml?v=2");
+			so.addVariable("configXml", "./xml/config.xml?v=3");
 			so.addVariable("lang", "<?php echo $lang; ?>");
 <?php
 	if (isset($_GET["uid"], $_GET["pubkey"])) {

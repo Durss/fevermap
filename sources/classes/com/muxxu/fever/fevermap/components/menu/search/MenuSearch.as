@@ -1,5 +1,4 @@
 package com.muxxu.fever.fevermap.components.menu.search {
-
 	import com.muxxu.fever.fevermap.components.menu.AbstractMenuContent;
 	import com.muxxu.fever.fevermap.components.menu.IMenuContent;
 	import com.muxxu.fever.fevermap.data.DataManager;

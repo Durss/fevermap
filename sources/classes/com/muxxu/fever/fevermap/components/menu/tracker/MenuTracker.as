@@ -1,19 +1,19 @@
 package com.muxxu.fever.fevermap.components.menu.tracker {
-
-	import flash.events.Event;
-	import com.nurun.core.lang.Disposable;
+	import com.muxxu.fever.fevermap.components.button.FeverButton;
 	import com.muxxu.fever.fevermap.components.menu.AbstractMenuContent;
 	import com.muxxu.fever.fevermap.components.menu.IMenuContent;
 	import com.muxxu.fever.fevermap.data.DataManager;
 	import com.muxxu.fever.fevermap.events.DataManagerEvent;
-	import com.muxxu.fever.fevermap.vo.Revision;
+	import com.muxxu.fever.fevermap.vo.RevisionCollection;
 	import com.muxxu.fever.graphics.SpinGraphic;
 	import com.nurun.components.text.CssTextField;
+	import com.nurun.core.lang.Disposable;
 	import com.nurun.structure.environnement.label.Label;
 	import com.nurun.utils.array.ArrayUtils;
 	import com.nurun.utils.pos.PosUtils;
 
 	import flash.display.Sprite;
+	import flash.events.Event;
 	import flash.events.MouseEvent;
 	
 	/**
@@ -31,6 +31,10 @@ package com.muxxu.fever.fevermap.components.menu.tracker {
 		private var _spin:SpinGraphic;
 		private var _opened:Boolean;
 		private var _captions:Sprite;
+		private var _nextBt:FeverButton;
+		private var _prevBt:FeverButton;
+		private var _offset:Number;
+		private var _total:Number;
 		
 		
 		
@@ -62,15 +66,16 @@ package com.muxxu.fever.fevermap.components.menu.tracker {
 		override public function open():void {
 			if(_opened) return;
 			_opened = true;
-			_container.addChild(_spin);
-			if(_container.contains(_revisionsHolder)) _container.removeChild(_revisionsHolder);
 			_container.graphics.clear();
 			_container.graphics.beginFill(0xff0000, 0);
-			_container.graphics.drawRect(0, 0, _title.width, 200);
+			_container.graphics.drawRect(0, 0, _container.width, _container.height);
 			_container.graphics.endFill();
-			_spin.x = _title.width * .5;
-			_spin.y = 200 * .5;
+			_spin.x = _container.width * .5;
+			_spin.y = _container.height * .5;
+			_container.addChild(_spin);
 			computePositions();
+			_prevBt.enabled = false;
+			_nextBt.enabled = false;
 			DataManager.getInstance().getRevisions(0, 0, 0, _ITEMS_PER_PAGE);
 		}
 		
@@ -78,6 +83,8 @@ package com.muxxu.fever.fevermap.components.menu.tracker {
 		 * @inheritDoc
 		 */
 		override public function close():void {
+			if(_container.contains(_revisionsHolder)) _container.removeChild(_revisionsHolder);
+			_container.graphics.clear();
 			var i:int, len:int;
 			len = _tracks.length;
 			for(i = 0; i < len; ++i) {
@@ -134,6 +141,8 @@ package com.muxxu.fever.fevermap.components.menu.tracker {
 			_captions			= _container.addChild(new Sprite()) as Sprite;
 			_spin				= new SpinGraphic();
 			_title.text			= Label.getLabel("menuTrackTitle");
+			_nextBt				= _container.addChild(new FeverButton(Label.getLabel("menuTrackItemNext"))) as FeverButton;
+			_prevBt				= _container.addChild(new FeverButton(Label.getLabel("menuTrackItemPrev"))) as FeverButton;
 			
 			var i:int, len:int, tf:CssTextField, colors:Array, px:int;
 			len = _ITEMS_PER_PAGE;
@@ -170,6 +179,17 @@ package com.muxxu.fever.fevermap.components.menu.tracker {
 		private function clickHandler(event:MouseEvent):void {
 			if(event.target is TrackItem) {
 				DataManager.getInstance().openZone(TrackItem(event.target).pos);
+			
+			}else if(event.target == _nextBt || event.target == _prevBt) {
+				var offset:int = event.target == _prevBt? _offset - _total : _offset + _total;
+				DataManager.getInstance().getRevisions(0, 0, offset, _total);
+				close();
+				_opened = true;//dirty
+				_container.addChild(_spin);
+				_spin.x = _back.width * .5;
+				_spin.y = _back.height * .5;
+				_prevBt.enabled = false;
+				_nextBt.enabled = false;
 			}
 		}
 		
@@ -179,8 +199,12 @@ package com.muxxu.fever.fevermap.components.menu.tracker {
 		override protected function computePositions():void {
 			PosUtils.hDistribute(ArrayUtils.toArray(_tracks), (103 + 10) * 5, 10, 10);
 			
-			_revisionsHolder.y = Math.round(_title.height + 10);
-			_captions.y = Math.round(_revisionsHolder.y + _revisionsHolder.height + 30);
+			_nextBt.y = _prevBt.y = Math.round(_title.height + 10);
+			_nextBt.x = Math.round(_prevBt.width + 10);
+			
+			_revisionsHolder.y = Math.round(_nextBt.y + _nextBt.height + 10);
+			
+			_captions.y = Math.round(_revisionsHolder.y + _revisionsHolder.height + 10);
 			
 			super.computePositions();
 			dispatchEvent(new Event(Event.RESIZE));
@@ -192,12 +216,12 @@ package com.muxxu.fever.fevermap.components.menu.tracker {
 		private function loadRevisionsCompleteHandler(event:DataManagerEvent):void {
 			if(_container.contains(_spin)) _container.removeChild(_spin);
 			_container.addChild(_revisionsHolder);
-			var i:int, len:int, items:Vector.<Revision>;
-			items = event.items;
-			len = items.length;
+			var i:int, len:int, collection:RevisionCollection;
+			collection = event.items;
+			len = collection.length;
 			for(i = 0; i < _ITEMS_PER_PAGE; ++i) {
 				if(i < len) {
-					_tracks[i].populate(items[i]);
+					_tracks[i].populate(collection.getRevisionAtIndex(i));
 					_revisionsHolder.addChild(_tracks[i]);
 				}else{
 					_tracks[i].clear();
@@ -206,6 +230,14 @@ package com.muxxu.fever.fevermap.components.menu.tracker {
 					}
 				}
 			}
+			
+			_container.addChild(_nextBt);
+			_container.addChild(_prevBt);
+			_prevBt.enabled = collection.isPrevPage;
+			_nextBt.enabled = collection.isNextPage;
+			_offset = collection.offset;
+			_total = collection.total;
+			
 			computePositions();
 		}
 		

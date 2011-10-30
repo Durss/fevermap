@@ -1,5 +1,6 @@
 package com.muxxu.fever.fevermap.components.form {
 
+	import com.muxxu.fever.fevermap.vo.RevisionCollection;
 	import com.nurun.utils.date.DateUtils;
 	import com.nurun.structure.environnement.label.Label;
 	import com.nurun.components.button.AbstractNurunButton;
@@ -34,7 +35,7 @@ package com.muxxu.fever.fevermap.components.form {
 		private var _nextBt:FeverButton;
 		private var _infos:CssTextField;
 		private var _title:CssTextField;
-		private var _revisions:Vector.<Revision>;
+		private var _revisions:RevisionCollection;
 		
 		
 		
@@ -57,7 +58,7 @@ package com.muxxu.fever.fevermap.components.form {
 		/**
 		 * Gets the current revision
 		 */
-		public function get revision():Revision { return _revisions[_index]; }
+		public function get revision():Revision { return _revisions.getRevisionAtIndex(_index); }
 
 
 
@@ -67,7 +68,7 @@ package com.muxxu.fever.fevermap.components.form {
 		/**
 		 * Populates the component
 		 */
-		public function populate(revisions:Vector.<Revision>):void {
+		public function populate(revisions:RevisionCollection):void {
 			_index = 0;
 			_revisions = revisions;
 			updateState();
@@ -157,12 +158,14 @@ package com.muxxu.fever.fevermap.components.form {
 			alpha = 1;
 			addChild(_title);
 			addChild(_infos);
+
+			var revision:Revision = _revisions.getRevisionAtIndex(_index);
 			
 			var title:String = Label.getLabel("revisionsInfos");
 			title = title.replace(/\$\{nbr\}/gi, _revisions.length - _index);
 			title = title.replace(/\$\{tot\}/gi, _revisions.length);
-			title = title.replace(/\$\{user\}/gi, _revisions[_index].pseudo);
-			title = title.replace(/\$\{date\}/gi, DateUtils.format(_revisions[_index].date, DateUtils.DATE+"/"+DateUtils.MONTH+"/"+DateUtils.YEAR+" "+DateUtils.HOUR+":"+DateUtils.MINUTE));
+			title = title.replace(/\$\{user\}/gi, revision.pseudo);
+			title = title.replace(/\$\{date\}/gi, DateUtils.format(revision.date, DateUtils.DATE+"/"+DateUtils.MONTH+"/"+DateUtils.YEAR+" "+DateUtils.HOUR+":"+DateUtils.MINUTE));
 			_infos.text = title;
 			
 			visible = true;
@@ -171,11 +174,11 @@ package com.muxxu.fever.fevermap.components.form {
 			if(contains(_nextBt)) removeChild(_nextBt);
 			
 			if(_index + 1 < _revisions.length) {
-				_prevBt.label = _revisions[_index + 1].pseudo;
+				_prevBt.label = _revisions.getRevisionAtIndex(_index + 1).pseudo;
 				addChild(_prevBt);
 			}
 			if(_index - 1 >= 0){
-				_nextBt.label = _revisions[_index - 1].pseudo;
+				_nextBt.label = _revisions.getRevisionAtIndex(_index - 1).pseudo;
 				addChild(_nextBt);
 			}
 			

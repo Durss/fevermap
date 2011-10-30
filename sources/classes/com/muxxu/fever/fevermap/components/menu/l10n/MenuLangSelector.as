@@ -91,6 +91,8 @@ package com.muxxu.fever.fevermap.components.menu.l10n {
 		}
 
 		private function clickHandler(event:MouseEvent):void {
+			if(_buttonToId[event.target] == null) return;
+			
 			var path:String = Config.getUncomputedPath("changeLang").replace(/\$\{CODE\}/gi, _buttonToId[event.target]);
 			navigateToURL(new URLRequest(path), "_self");
 		}

@@ -9,7 +9,7 @@
 		
 		<label code="shareIsland"><![CDATA[Lien direct]]></label>
 		
-		<label code="thanks"><![CDATA[Application grâcieusement hébergée par]]></label>
+		<label code="thanks"><![CDATA[Application gracieusement hébergée par]]></label>
 		<label code="initFaillure"><![CDATA[Une erreur s'est produite lors de l'initialisation de l'application.<br />Vérifiez que votre connexion est active.<br />Détails de l'erreur :]]></label>
 		
 		<label code="countdownTitle"><![CDATA[Sauvegarde dans :]]></label>
@@ -205,7 +205,7 @@
 		
 		<label code="messageCensored"><![CDATA[- Message modéré -]]></label>
 		<label code="messageReport"><![CDATA[Report]]></label>
-		<label code="menuMessageTitle"><![CDATA[Un mot doux? Une déclaration d'amour?<br />Une insulte? Défoulez-vous!<br /><span class="menuContentTitleSmall">(enfin pas trop non plus...)</span>]]></label>
+		<label code="menuMessageTitle"><![CDATA[Un mot doux? Une déclaration d'amour?<br />Un rapport de bug? Défoulez-vous!<br /><span class="menuContentTitleSmall">(enfin pas trop non plus...)</span>]]></label>
 		<label code="menuMessageEntryTitle"><![CDATA[Par <b>${PSEUDO}</b> le <b>${DATE}</b> :]]></label>
 		<label code="menuMessageAddTitle"><![CDATA[Ecrivez votre commentaire et choisissez combien d'amour il contient à l'aide des boutons colorés :<br/> <span class="menuContentTitleSmall">( <font color="#DB3E3E">Je te déteste, sale @&#$!</font> ,   <font color="#80D147">Je t'aime tout beaucoup fort &lt;3 ! </font>)</span>]]></label>
 		<label code="menuMessageSubmit"><![CDATA[Envoyer]]></label>
@@ -219,7 +219,7 @@
 		<label code="initSubmit"><![CDATA[Continuer]]></label>
 		<label code="initDownload"><![CDATA[Télécharger mes marquages en cas de cafouille <i>(conseillé)</i>]]></label>
 		
-		<label code="help"><![CDATA[  Cette application ayant été développée par les pieds d'un manchot portant des lunettes 3D rouges et bleu, le tout, uniquement les soirs de pleine lune, si vous rencontrez des soucis, alors c'est bien normal! Dans ce cas, n'hésitez surtout pas à m'insulter au travers du menu <b>Messages</b> juste à côté :].<br />  Si en revanche vous avez prit un sévère coup de lunette de toilette derrière la nuque et que par conséquent il vous viendrait à l'idée de vouloir me dire un mot doux, le même menu vous permettra de le faire!<br /><br />  Les droits d'édition de la carte sont donnés par <a href="http://muxxu.com/msg/write?user=durss" class="legalsLink" target="_blank">Durss</a> à un nombre restreint d'utilisateurs. Si vous avez au moins <b><font color="#FF0000">6000pts</font></b> (fever) vous pouvez lui demander d'avoir les droits d'admin.<br /><br />  L'hébergement ainsi que le nom de domaine de cette application sont offerts par <a href="http://www.motion-twin.com/" class="legalsLink">Motion-Twin</a> et je leur en suis très reconnaissant <i>(comme en atteste l'encart kawaï en bas à droite)</i>.<br /><br />  Pour toute suggestion ou rapport de bug, merci de passer par l'onglet <b>FeedBack</b> en bas de l'application.]]></label>
+		<label code="help"><![CDATA[  Cette application ayant été développée avec les pieds d'une personne mentalement légèrement déficiente, si vous rencontrez des soucis, alors c'est bien normal! Dans ce cas, n'hésitez surtout pas à me le faire savoir au travers du menu <b>Messages</b> juste à côté :].<br />  Et si vous avez un excédent d'amour à partager, n'hésitez pas une seconde à me dire un mot doux au même endroit!<br /><br />  Les droits d'édition de la carte sont donnés par <a href="http://muxxu.com/msg/write?user=durss" class="legalsLink" target="_blank">Durss</a> à un nombre restreint d'utilisateurs. Si vous avez au moins <b><font color="#FF0000">6000pts</font></b> (fever) vous pouvez lui demander d'avoir les droits d'admin.<br /><br />  L'hébergement ainsi que le nom de domaine de cette application sont offerts par <a href="http://www.motion-twin.com/" class="legalsLink">Motion-Twin</a> et je leur en suis très reconnaissant <i>(comme en atteste l'encart kawaï en bas à droite)</i>.<br /><br />  Pour toute suggestion ou rapport de bug, merci de passer par l'onglet <b>FeedBack</b> en bas de l'application.<br />Trouverez-vous les 2 easter-eggs?]]></label>
 		<label code="legals"><![CDATA[Ce site n'est pas affilié à <a href="http://www.motion-twin.com/" class="legalsLink">Motion-Twin</a>. Il a été développé dans un but non-lucratif.<br />Les images et textes provenant des jeux de <a href="http://www.motion-twin.com/" class="legalsLink">Motion-Twin</a> sont soumis au droit d'auteur copyright © 2009 <i>(<a href="http://support.motion-twin.com/cgu" class="legalsLinkSmall">conditions générales d'utilisation</a>)</i><br />L'auteur du site s'engage à retirer les images et textes provenant des sites de <a href="http://www.motion-twin.com/" class="legalsLink">Motion-Twin</a> sur simple demande.]]></label>
 		
 		<label code="menu1"><![CDATA[Navigation]]></label>

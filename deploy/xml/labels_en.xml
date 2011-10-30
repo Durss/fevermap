@@ -200,10 +200,12 @@
 		<label code="menuTrackItemCaption3"><![CDATA[Monster]]></label>
 		<label code="menuTrackItemCaption4"><![CDATA[Rainbow]]></label>
 		<label code="menuTrackItemCaption5"><![CDATA[Wall]]></label>
+		<label code="menuTrackItemNext"><![CDATA[Suivants]]></label>
+		<label code="menuTrackItemPrev"><![CDATA[Précédents]]></label>
 		
 		<label code="messageCensored"><![CDATA[- Message moderated -]]></label>
 		<label code="messageReport"><![CDATA[Report]]></label>
-		<label code="menuMessageTitle"><![CDATA[A soft word? A love declaration?<br />An insult? Have fun!<br /><span class="menuContentTitleSmall">(but not too much please...)</span>]]></label>
+		<label code="menuMessageTitle"><![CDATA[A soft word? A love declaration?<br />A bug report? Have fun!]]></label>
 		<label code="menuMessageEntryTitle"><![CDATA[By <b>${PSEUDO}</b> the <b>${DATE}</b> :]]></label>
 		<label code="menuMessageAddTitle"><![CDATA[Write your comment then select how much love it contains with the colored buttons :<br/> <span class="menuContentTitleSmall">( <font color="#DB3E3E">I hate you, dirty @&#$!</font> ,   <font color="#80D147">I looove you sooo much &lt;3 ! </font>)</span>]]></label>
 		<label code="menuMessageSubmit"><![CDATA[Send]]></label>

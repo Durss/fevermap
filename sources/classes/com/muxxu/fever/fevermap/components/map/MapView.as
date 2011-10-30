@@ -1,5 +1,6 @@
 package com.muxxu.fever.fevermap.components.map {
 
+	import com.muxxu.fever.fevermap.data.SharedObjectManager;
 	import com.muxxu.fever.fevermap.data.DataManager;
 	import com.muxxu.fever.fevermap.events.DataManagerEvent;
 	import com.muxxu.fever.graphics.PinEndGraphic;
@@ -64,6 +65,11 @@ package com.muxxu.fever.fevermap.components.map {
 			_endPin = new PinEndGraphic();
 			_startPin.filters = _endPin.filters = [new DropShadowFilter(4,0,0,.5,10,10,1,2)];
 			DataManager.getInstance().addEventListener(DataManagerEvent.PATH_FINDER_PATH_FOUND, pathHandler);
+			DataManager.getInstance().addEventListener(DataManagerEvent.CENTER_MAP_ON_POUSTY, centerMapHandler);
+		}
+
+		private function centerMapHandler(event:DataManagerEvent):void {
+			centerOn(SharedObjectManager.getInstance().playerPosition);
 		}
 		
 		/**

@@ -1,6 +1,5 @@
 package com.muxxu.fever.fevermap.components.map {
 	import gs.TweenLite;
-	import gs.easing.Sine;
 
 	import com.muxxu.fever.fevermap.components.map.icons.MapIconMapPattern;
 	import com.muxxu.fever.fevermap.components.tooltip.ToolTip;
@@ -653,9 +652,9 @@ package com.muxxu.fever.fevermap.components.map {
 				_ttContent.displayFull();
 				_spin.visible = false;
 				TweenLite.to(_disableLayer, .5, {autoAlpha:1});
-				var px:Number = _px + (_width * .5 - mouseX);
-				var py:Number = _py + (_height * .5 - mouseY);
-				TweenLite.to(this, .5, {ease:Sine.easeInOut, posX:px, posY:py, onUpdate:render, onUpdateParams:[true], onComplete:checkForLoading});
+//				var px:Number = _px + (_width * .5 - mouseX);
+//				var py:Number = _py + (_height * .5 - mouseY);
+//				TweenLite.to(this, .5, {ease:Sine.easeInOut, posX:px, posY:py, onUpdate:render, onUpdateParams:[true], onComplete:checkForLoading});
 			}
 		}
 
