@@ -34,7 +34,7 @@
 	--> 
     <id>com.muxxu.fever.FeverMap</id>
 	<filename>FeverMap</filename>
-	<version>1.1</version>
+	<version>1.2</version>
     
     <name>FeverMap</name>
     <description>Displays a map of the game : http://fever.muxxu.com</description>
@@ -71,7 +71,6 @@
         <width>860</width>
         <height>680</height>
 		<minSize>400 300</minSize>
-		<maxSize>2000 2000</maxSize>
         <minimizable>true</minimizable>
         <maximizable>true</maximizable>
         <resizable>true</resizable>

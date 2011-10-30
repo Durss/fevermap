@@ -1,8 +1,9 @@
 package com.muxxu.fever.fevermap.components.tooltip.content {
-
+	import com.nurun.structure.environnement.configuration.Config;
 	import gs.TweenLite;
 
 	import com.muxxu.fever.fevermap.components.button.FeverButton;
+	import com.muxxu.fever.fevermap.components.form.FeverInput;
 	import com.muxxu.fever.fevermap.components.form.ObjectsFlagger;
 	import com.muxxu.fever.fevermap.components.form.ZoneForm;
 	import com.muxxu.fever.fevermap.components.map.MapEntry;
@@ -55,6 +56,8 @@ package com.muxxu.fever.fevermap.components.tooltip.content {
 		private var _imHere:FeverButton;
 		private var _whosThere:FeverButton;
 		private var _goThere:FeverButton;
+		private var _shareInput:FeverInput;
+		private var _shareLabel:CssTextField;
 										/* *********** *		 * CONSTRUCTOR *		 * *********** */		/**		 * Creates an instance of <code>TTZoneContent</code>.		 */		public function TTZoneContent(canBedisposed:Boolean = true) {			_canBedisposed = canBedisposed;			initialize();		}						/* ***************** *		 * GETTERS / SETTERS *		 * ***************** */		/**		 * Gets if the content is interactive or not.		 */		public function get isInteractive():Boolean { return _data != null || DataManager.getInstance().isAdmin; }
 		
 		/**
@@ -94,6 +97,7 @@ package com.muxxu.fever.fevermap.components.tooltip.content {
 			_posY = py;
 			
 			_tf.text = Label.getLabel("mapEngineAreaCoords").replace(/\$\{x\}/gi, px).replace(/\$\{y\}/gi, py);
+			_shareInput.text = Config.getPath("shareIsland").replace(/\$\{x\}/gi, px).replace(/\$\{y\}/gi, py).replace(/\$\{zoom\}/gi, "5");
 			_summary.populate(data);
 			
 			computePositions();		}
@@ -165,6 +169,8 @@ package com.muxxu.fever.fevermap.components.tooltip.content {
 			_whosThere	= _buttonsCtn.addChild(new FeverButton(Label.getLabel("flagAreaWhosThere"), new PoustyGraphic())) as FeverButton;			_visited	= _buttonsCtn.addChild(new FeverButton(Label.getLabel("flagAreaAsVisited"), new Bitmap(new UpdateBmp(NaN, NaN)))) as FeverButton;
 			_cleaned	= _buttonsCtn.addChild(new FeverButton(Label.getLabel("flagAreaAsCleaned"), new Bitmap(new UpdateBmp(NaN, NaN)))) as FeverButton;
 			_goThere	= _buttonsCtn.addChild(new FeverButton(Label.getLabel("flagAreaFinPath"), new Bitmap(new ZoomInBmp(NaN, NaN)))) as FeverButton;
+			_shareLabel	= _buttonsCtn.addChild(new CssTextField("button")) as CssTextField;
+			_shareInput	= _buttonsCtn.addChild(new FeverInput()) as FeverInput;
 			_objects	= addChild(new ObjectsFlagger()) as ObjectsFlagger;
 			_form		= addChild(new ZoneForm()) as ZoneForm;
 			_summary	= addChild(new ZoneSummary()) as ZoneSummary;			_spin		= new SpinGraphic();
@@ -175,6 +181,8 @@ package com.muxxu.fever.fevermap.components.tooltip.content {
 			_visited.iconAlign = IconAlign.CENTER;
 			_cleaned.textAlign = TextAlign.CENTER;
 			_visited.textAlign = TextAlign.CENTER;
+			
+			_shareLabel.text = Label.getLabel("shareIsland");
 			
 			addEventListener(MouseEvent.CLICK, clickHandler);
 			_form.addEventListener(Event.RESIZE, computePositions);
@@ -216,6 +224,7 @@ package com.muxxu.fever.fevermap.components.tooltip.content {
 			_imHere.validate();
 			_goThere.validate();
 			_updateBt.validate();
+			_shareInput.validate();
 			_cleaned.x = Math.round(_visited.width + 5);
 			_imHere.x = Math.round(_cleaned.x + _cleaned.width + 5);
 //			_whosThere.x = Math.round(_imHere.x + _imHere.width + 5);
@@ -226,6 +235,9 @@ package com.muxxu.fever.fevermap.components.tooltip.content {
 					_cleaned.y = _visited.y = _imHere.y = Math.round(_updateBt.height + 5);
 				}
 				_whosThere.y = _goThere.y = Math.round(_cleaned.y + _cleaned.height + 5);
+				_shareInput.width = Math.round(Math.max(_imHere.x+_imHere.width, _goThere.x+_goThere.width) - _shareLabel.width - 5);
+				_shareInput.y = _shareLabel.y = Math.round(_whosThere.y + _whosThere.height + 5);
+				_shareInput.x = Math.round(_shareLabel.width + 5);
 				
 				if(_form.opened) {
 					PosUtils.vPlaceNext(10, _tf, _form, _buttonsCtn);
@@ -282,7 +294,6 @@ package com.muxxu.fever.fevermap.components.tooltip.content {
 					_updateBt.label = Label.getLabel("submitForm");
 					_form.open();
 					if(_data == null) {
-						trace("TTZoneContent.clickHandler(event)");
 						unlock();
 					}
 				}

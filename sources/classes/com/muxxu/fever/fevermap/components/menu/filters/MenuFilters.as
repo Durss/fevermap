@@ -28,7 +28,6 @@ package com.muxxu.fever.fevermap.components.menu.filters {
 		private var _spoilBt:FeverCheckBox;
 		private var _spoilGlowBt:FeverCheckBox;
 		private var _diffObjects:FeverCheckBox;
-//		private var _importFlags:FeverButton;
 		private var _group:FormComponentGroup;
 		private var _renderModeTitle:CssTextField;
 		private var _isInit:Boolean;
@@ -115,9 +114,6 @@ package com.muxxu.fever.fevermap.components.menu.filters {
 			_spoilGlowBt = _container.addChild(new FeverCheckBox(Label.getLabel("spoilGlow"))) as FeverCheckBox;
 			_diffObjects = _container.addChild(new FeverCheckBox(Label.getLabel("diffObjects"))) as FeverCheckBox;
 			_renderModeTitle = _container.addChild(new CssTextField("menuContentTitle")) as CssTextField;
-//			_importFlags = _container.addChild(new FeverButton(Label.getLabel("importFlags"), new Item11Graphic())) as FeverButton;
-			
-//			_importFlags.textAlign = TextAlign.CENTER;
 			
 			_renderModeTitle.text = Label.getLabel("renderModeTitle");
 			var i:int, len:int, bt:FeverRadioButton;
@@ -139,7 +135,6 @@ package com.muxxu.fever.fevermap.components.menu.filters {
 				for(i = 0; i < len; ++i) {
 					_container.removeChild(_renderModeButtons[i]);
 				}
-//				_container.removeChild(_importFlags);
 			}
 
 			_showGotObjects.selected = SharedObjectManager.getInstance().sgObjects;
@@ -166,9 +161,6 @@ package com.muxxu.fever.fevermap.components.menu.filters {
 		 * Called when a button is clicked
 		 */
 		private function clickHandler(event:MouseEvent):void {
-//			if(event.target == _importFlags) {
-//				DataManager.getInstance().importFlags();
-//			}
 		}
 		
 		/**
@@ -181,13 +173,9 @@ package com.muxxu.fever.fevermap.components.menu.filters {
 			_spoilGlowBt.validate();
 			_diffObjects.validate();
 			
-//			_importFlags.width = _fullScreen.width = Math.max(_showGotObjects.width, _spoilBt.width, _spoilGlowBt.width, _diffObjects.width);
-//			_importFlags.validate();
-
 			PosUtils.vPlaceNext(3, _spoilBt, _showGotObjects, _spoilGlowBt, _diffObjects, _renderModeTitle);
 			_renderModeTitle.y += 10;
 			PosUtils.vPlaceNext(3, _renderModeTitle, ArrayUtils.toArray(_renderModeButtons));
-//			PosUtils.vPlaceNext(10, _renderMode3, _importFlags);
 
 			super.computePositions();
 		}

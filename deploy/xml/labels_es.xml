@@ -205,7 +205,7 @@
 		
 		<label code="messageCensored"><![CDATA[- Mensaje moderado -]]></label>
 		<label code="messageReport"><![CDATA[Reportar]]></label>
-		<label code="menuMessageTitle"><![CDATA[¿Una palabra suave? ¿Una declaración de amor?<br />¿Un insulto? ¡Diviértete!<br /><span class="menuContentTitleSmall">(Pero no demasiado, por favor...)</span>]]></label>
+		<label code="menuMessageTitle"><![CDATA[¿Una palabra suave? ¿Una declaración de amor?<br />¿Un bug? ¡Diviértete!<br /><span class="menuContentTitleSmall">(Pero no demasiado, por favor...)</span>]]></label>
 		<label code="menuMessageEntryTitle"><![CDATA[Por <b>${PSEUDO}</b> el <b>${DATE}</b> :]]></label>
 		<label code="menuMessageAddTitle"><![CDATA[Escribe tu comentario y luego selecciona cuánto amor hay en él con los botones de colores:<br/> <span class="menuContentTitleSmall">( <font color="#DB3E3E">¡Te odio, sucio @&#$!</font> ,    <font color="#80D147">¡Te quieeero muchooo &lt;3 ! </font>)</span>]]></label>
 		<label code="menuMessageSubmit"><![CDATA[Enviar]]></label>
@@ -220,6 +220,7 @@
 		<label code="initDownload"><![CDATA[Descargar mi información de mapas. Sólo dado el caso <i>(recomendado)</i>]]></label>
 		
 		<label code="help"><![CDATA[  Si te gusta u odias esta aplicación, por favor, ¡házmelo saber a través del panel de <b>"Mensajes"</b> :)!<br /><br /> Los derechos de edición están dados por <a href="http://muxxu.com/msg/write?user=durss" class="legalsLink" target="_blank">Durss</a> pero sólo a unas cuantas personas. Puedes pedirle los derechos de edición, pero sólo se tendrá en cuenta si tienes al menos <b><font color="#FF0000">6000 puntos</font></b> en Fever.<br /><br /> <a href="http://www.motion-twin.com/" class="legalsLink">Motion-Twin</a> acoge actualmente el sitio y el nombre del dominio, y estoy muy agradecido por ello <i>(como puedes ver en el lindo botón abajo a la derecha ^^)</i>.<br /><br /> Gracias a <a href="http://muxxu.com/u/Azuron" class="legalsLink">Azuron</a> por ayudarme con la traducción al español.<br /><br /> Para alguna sugerencia, o para reportar un bug, por favor usa el botón de <b>Comentarios</b> en la parte inferior de la pantalla.]]></label>
+		<label code="legals"><![CDATA[]]></label><!-- TODO -->
 		
 		<label code="menu1"><![CDATA[Navegación]]></label>
 		<label code="menu2"><![CDATA[Opciones]]></label>

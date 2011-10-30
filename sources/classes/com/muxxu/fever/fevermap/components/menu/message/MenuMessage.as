@@ -31,7 +31,7 @@ package com.muxxu.fever.fevermap.components.menu.message {
 	public class MenuMessage extends AbstractMenuContent implements IMenuContent {
 		
 		private const _WIDTH:int = 400;
-		private const _COLORS:Array = [0x80D147, 0xd2d217, 0xDB9B3E, 0xDB3E3E, 0x999999, 0];
+		private const _COLORS:Array = [0x80D147, 0xd2d217, 0xDB9B3E, 0xDB3E3E, 0x999999, 0x159eb7];
 			
 		private var _title:CssTextField;
 		private var _spin:SpinGraphic;
@@ -169,8 +169,8 @@ package com.muxxu.fever.fevermap.components.menu.message {
 				tf.background = true;
 				tf.backgroundColor = _COLORS[items[i].love];
 				if(items[i].love == _COLORS.length -1) {
-					tf.borderColor = 0xcc0000;
-					tf.backgroundColor = 0;
+					tf.borderColor = 0x159eb7;
+					tf.backgroundColor = 0x0b4e59;
 				}
 				tf.width = _WIDTH - _scroller.width - 5;
 				tf.x = 2;
@@ -199,8 +199,8 @@ package com.muxxu.fever.fevermap.components.menu.message {
 				tf.background = true;
 				tf.backgroundColor = 0x724338;
 				if(items[i].love == _COLORS.length -1) {
-					tf.borderColor = 0xcc0000;
-					tf.backgroundColor = 0x8d1d1d;
+					tf.borderColor = 0x159eb7;
+					tf.backgroundColor = 0x0f7182;
 				}
 				tf.width = _WIDTH - _scroller.width - 5;
 				tf.x = 2;

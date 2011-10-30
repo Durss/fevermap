@@ -1,4 +1,7 @@
 package com.muxxu.fever.fevermap.components.menu.search {
+	import flash.utils.setTimeout;
+	import gs.TweenLite;
+	import gs.easing.Sine;
 
 	import com.muxxu.fever.fevermap.components.button.FeverButton;
 	import com.muxxu.fever.fevermap.components.form.FeverInput;
@@ -15,6 +18,7 @@ package com.muxxu.fever.fevermap.components.menu.search {
 	import com.nurun.structure.environnement.label.Label;
 	import com.nurun.utils.pos.PosUtils;
 
+	import flash.display.Shape;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.FocusEvent;
@@ -37,6 +41,7 @@ package com.muxxu.fever.fevermap.components.menu.search {
 		private var _scrollpane:ScrollPane;
 		private var _resultTitle:CssTextField;
 		private var _width:int;
+		private var _highlight:Shape;
 		
 		
 		
@@ -82,6 +87,18 @@ package com.muxxu.fever.fevermap.components.menu.search {
 			_submit.tabIndex = value;
 			return value;
 		}
+		
+		/**
+		 * Highlights the results
+		 */
+		public function highlightResults():void {
+			_highlight.y = _resultTitle.y;
+			_highlight.width = _width;
+			_highlight.height = height - _highlight.y;
+			_highlight.alpha = 0;
+			TweenLite.to(_highlight, .25, {autoAlpha:.8, ease:Sine.easeOut});
+			TweenLite.to(_highlight, .25, {autoAlpha:0, delay:.26, ease:Sine.easeIn, onComplete:hideHighlight});
+		}
 
 
 		
@@ -102,6 +119,12 @@ package com.muxxu.fever.fevermap.components.menu.search {
 			_resultsCtn = new ScrollableDisplayObject();
 			_scrollpane = addChild(new ScrollPane(_resultsCtn, new FeverScrollBar(), new FeverScrollBar())) as ScrollPane;
 			_resultTitle = addChild(new CssTextField("menuContentTitle")) as CssTextField;
+			_highlight = addChild(new Shape()) as Shape;
+			
+			_highlight.graphics.beginFill(0xffffff, 1);
+			_highlight.graphics.drawRect(0, 0, 10, 10);
+			_highlight.graphics.endFill();
+			_highlight.visible = false;
 			
 			_scrollpane.autoHideScrollers = true;
 			_title.background = true;
@@ -207,6 +230,7 @@ package com.muxxu.fever.fevermap.components.menu.search {
 			}
 			computePositions();
 			dispatchEvent(new Event(Event.RESIZE));
+			setTimeout(highlightResults, 100);
 		}
 		
 		/**
@@ -214,6 +238,10 @@ package com.muxxu.fever.fevermap.components.menu.search {
 		 */
 		private function getUsersErrorHandler(event:DataManagerEvent):void {
 			_submit.enabled = true;
+		}
+
+		private function hideHighlight():void {
+			_highlight.visible = false;
 		}
 		
 	}

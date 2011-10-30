@@ -1,5 +1,5 @@
 package com.muxxu.fever.fevermap.components.menu {
-
+	import com.muxxu.fever.fevermap.components.menu.world.WorldSelector;
 	import com.muxxu.fever.fevermap.components.button.FeverButton;
 	import com.muxxu.fever.fevermap.components.map.MapEngine;
 	import com.muxxu.fever.fevermap.components.menu.filters.MenuFilters;
@@ -17,6 +17,7 @@ package com.muxxu.fever.fevermap.components.menu {
 	import com.nurun.components.vo.Margin;
 	import com.nurun.core.lang.Disposable;
 	import com.nurun.structure.environnement.configuration.Config;
+	import com.nurun.structure.environnement.label.Label;
 	import com.nurun.utils.array.ArrayUtils;
 	import com.nurun.utils.pos.PosUtils;
 
@@ -144,6 +145,7 @@ package com.muxxu.fever.fevermap.components.menu {
 			MenuMessage;
 			MenuHelp;
 			MenuLangSelector;
+			WorldSelector;
 			MenuZoom;
 			
 			len = nodes.length();
@@ -155,7 +157,7 @@ package com.muxxu.fever.fevermap.components.menu {
 				if(nodes[i].@special == "logout" && DataManager.getInstance().muxxuContext) continue;
 				
 				clazz = getDefinitionByName(nodes[i].@icon) as Class;
-				item = addChild(new FeverButton(nodes[i][0], new clazz(), false)) as FeverButton;
+				item = addChild(new FeverButton(String(nodes[i][0]).length > 0 ? Label.getLabel(nodes[i][0]) : "", new clazz(), false)) as FeverButton;
 				item.height = 25;
 				item.iconSpacing = 5;
 				if(String(nodes[i][0]).length == 0) {

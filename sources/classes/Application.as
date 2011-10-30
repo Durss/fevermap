@@ -1,4 +1,5 @@
 package  {
+	import com.muxxu.fever.fevermap.components.LockedStateView;
 	import gs.TweenLite;
 	import gs.plugins.ColorMatrixFilterPlugin;
 	import gs.plugins.RemoveChildPlugin;
@@ -70,8 +71,14 @@ package  {
 		private var _exceptionView:DisplayObject;
 		private var _libInitialized:Boolean;
 		private var _countdown:SaveCountdownView;
+		private var _needUpdate:Boolean;
 										/* *********** *		 * CONSTRUCTOR *		 * *********** */		/**		 * Creates an instance of <code>Application</code>.<br>		 */		public function Application() {
 			TweenPlugin.activate([ColorMatrixFilterPlugin, RemoveChildPlugin]);			//Sets the local/online mode.			if(SharedObjectManager.getInstance().localMode) {				Config.addPath("server", Config.getUncomputedPath("serverOffline"));			}else{				Config.addPath("server", Config.getUncomputedPath("serverOnline"));			}						addEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
+			_tooltip	= addChild(new ToolTip()) as ToolTip;
+			_content	= new TTTextContent(false);
+			_timerHide	= new Timer(3000, 1);
+			DataManager.getInstance().addEventListener(DataManagerEvent.NEED_APP_UPDATE, needUpdateHandler);
+			DataManager.getInstance().addEventListener(DataManagerEvent.SHOW_APP_MESSAGE, showAppMessageHandler);
 			
 		}				/**		 * Called when the stage is available.		 */		private function addedToStageHandler(event:Event):void {			removeEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);			stage.addEventListener(Event.RESIZE, computePositionsInit);
 			resetApplication();
@@ -162,13 +169,11 @@ package  {
 			_menu		= addChild(new MainMenu(_map)) as MainMenu;
 			_feedback	= addChild(new FeedbackButton()) as FeedbackButton;
 			_thanksBt	= addChild(new ThanksInsert()) as ThanksInsert;
-			_tooltip	= addChild(new ToolTip()) as ToolTip;
+			addChild(_tooltip);
+			addChild(new LockedStateView());
 			_countdown	= addChild(new SaveCountdownView()) as SaveCountdownView;
 			addChild(new PoustyView());
 			addChild(_exceptionView);
-			
-			_content	= new TTTextContent(false);
-			_timerHide	= new Timer(3000, 1);
 			
 			var pos:Point, zoom:int;
 			if(!isNaN(Config.getNumVariable("zoom"))) {
@@ -196,8 +201,6 @@ package  {
 			DataManager.getInstance().addEventListener(DataManagerEvent.ADD_AREA_ERROR, errorHandler);
 			DataManager.getInstance().addEventListener(DataManagerEvent.UPDATE_MAP, updateMapHandler);
 			DataManager.getInstance().addEventListener(DataManagerEvent.OPEN_ZONE, openZoneHandler);
-			DataManager.getInstance().addEventListener(DataManagerEvent.NEED_APP_UPDATE, needUpdateHandler);
-			DataManager.getInstance().addEventListener(DataManagerEvent.SHOW_APP_MESSAGE, showAppMessageHandler);
 			DataManager.getInstance().addEventListener(DataManagerEvent.UPDATE_POS_ERROR, errorHandler);
 			DataManager.getInstance().addEventListener(DataManagerEvent.LOAD_MESSAGE_ERROR, errorHandler);
 			DataManager.getInstance().addEventListener(DataManagerEvent.ADD_MESSAGE_ERROR, errorHandler);
@@ -280,9 +283,6 @@ package  {
 			
 			_map = null;
 			_sequenceDetector = null;
-			_tooltip = null;
-			_content = null;
-			_timerHide = null;
 			_feedback = null;
 			_loginForm = null;
 			_menu = null;
@@ -296,7 +296,7 @@ package  {
 		}
 		
 		/**		 * Resize and replace the elements.		 */		private function computePositions(event:Event = null):void {
-			_map.width = Math.min(2000, stage.stageWidth);			_map.height = Math.min(2000, stage.stageHeight);
+			_map.width = Math.min(4000, stage.stageWidth);			_map.height = Math.min(4000, stage.stageHeight);
 			PosUtils.centerInStage(_map);
 						_feedback.validate();			PosUtils.centerInStage(_feedback);
 			_feedback.y = Math.round(stage.stageHeight - _feedback.height + 2);
@@ -315,6 +315,8 @@ package  {
 		 * Called if initialization fails
 		 */
 		private function initErrorHandler(event:CommandEvent):void {
+			if(_needUpdate) return;
+			
 			var tf:CssTextField = addChild(new CssTextField("error")) as CssTextField;
 			tf.background = true;
 			tf.backgroundColor = 0;
@@ -362,7 +364,7 @@ package  {
 				case DataManagerEvent.REPORT_MESSAGE_ERROR: errorMsg = "reportMessageError" + event.resultCode; break;
 				case DataManagerEvent.PATH_FINDER_NO_PATH_FOUND: errorMsg = "menuSearchPathNoResult"; break;
 			}
-			_map.enable();
+			if(_map != null) _map.enable();
 			_content.populate(Label.getLabel(errorMsg), "tooltipContentError");
 			_tooltip.open(new ToolTipMessage(_content));
 			_timerHide.reset();
@@ -371,8 +373,10 @@ package  {
 		}		/**		 * Called if the application needs to be updated		 */		private function needUpdateHandler(event:DataManagerEvent):void {
 			if(Capabilities.playerType.toLowerCase() == "desktop") {				_content.populate(Label.getLabel("needUpdateAir"), "tooltipContentError");				_tooltip.open(new ToolTipMessage(_content));				PosUtils.centerInStage(_tooltip);				
 				_timerHide.stop();
-				_map.disable();
-			}else{				_content.populate(Label.getLabel("needUpdateSwf"), "tooltipContentError");				_tooltip.open(new ToolTipMessage(_content));				PosUtils.centerInStage(_tooltip);				if(ExternalInterface.available) {					ExternalInterface.call("reload");				}			}		}				/**		 * Displays a message from the server.		 */		private function showAppMessageHandler(event:DataManagerEvent):void {			var style:String;			if(event.message.type == 1) style = "tooltipContent";			if(event.message.type == 2) style = "tooltipContentError";			if(event.message.type == 3) style = "tooltipContentSuccess";			_content.populate(event.message.message, style);
+				if(_map != null) _map.disable();
+			}else{				_content.populate(Label.getLabel("needUpdateSwf"), "tooltipContentError");				_tooltip.open(new ToolTipMessage(_content));				PosUtils.centerInStage(_tooltip);				if(ExternalInterface.available) {					ExternalInterface.call("reload");				}			}
+			_needUpdate = true;
+			removeChild(_spin);		}				/**		 * Displays a message from the server.		 */		private function showAppMessageHandler(event:DataManagerEvent):void {			var style:String;			if(event.message.type == 1) style = "tooltipContent";			if(event.message.type == 2) style = "tooltipContentError";			if(event.message.type == 3) style = "tooltipContentSuccess";			_content.populate(event.message.message, style);
 			_tooltip.open(new ToolTipMessage(_content));
-			if(event.message.lock) {				_timerHide.stop();				_map.disable();			}else{				_timerHide.reset();				_timerHide.start();			}			PosUtils.centerInStage(_tooltip);		}
+			if(event.message.lock) {				_timerHide.stop();				if(_map != null) _map.disable();			}else{				_timerHide.reset();				_timerHide.start();			}			PosUtils.centerInStage(_tooltip);		}
 			}}

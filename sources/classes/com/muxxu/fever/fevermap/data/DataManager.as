@@ -1,5 +1,4 @@
 package com.muxxu.fever.fevermap.data {
-	import com.nurun.structure.environnement.configuration.Config;
 	import be.dauntless.astar.Astar;
 	import be.dauntless.astar.AstarEvent;
 	import be.dauntless.astar.BasicTile;
@@ -15,9 +14,10 @@ package com.muxxu.fever.fevermap.data {
 	import com.muxxu.fever.fevermap.utils.HTTPPath;
 	import com.muxxu.fever.fevermap.vo.AppMessage;
 	import com.muxxu.fever.fevermap.vo.Message;
-	import com.muxxu.fever.fevermap.vo.Revision;
+	import com.muxxu.fever.fevermap.vo.RevisionCollection;
 	import com.muxxu.fever.fevermap.vo.User;
 	import com.nurun.core.lang.boolean.parseBoolean;
+	import com.nurun.structure.environnement.configuration.Config;
 	import com.nurun.structure.environnement.label.Label;
 	import com.nurun.utils.object.ObjectUtils;
 
@@ -60,6 +60,8 @@ package com.muxxu.fever.fevermap.data {
 		private var _pfStartPoint:Point;
 		private var _pfEndPoint:Point;
 		private var _objectToSearch:String;
+		private var _currentWorld:String;
+		private var _locked:Boolean;
 								/* *********** *		 * CONSTRUCTOR *		 * *********** */		/**		 * Creates an instance of <code>DataManager</code>.		 */		public function DataManager(enforcer:SingletonEnforcer) {			if(enforcer == null) {				throw new IllegalOperationError("A singleton can't be instanciated. Use static accessor 'getInstance()'!");			}			initialize();		}						/* ***************** *		 * GETTERS / SETTERS *		 * ***************** */		/**		 * Singleton instance getter.		 */		public static function getInstance():DataManager {			if(_instance == null)_instance = new  DataManager(new SingletonEnforcer());			return _instance;			}
 
 		/**
@@ -106,6 +108,11 @@ package com.muxxu.fever.fevermap.data {
 		 * Gets the current path
 		 */
 		public function get currentPath():Array { return _currentPath; }
+		
+		/**
+		 * Gets if the model is locked
+		 */
+		public function get locked():Boolean { return _locked; }
 						/* ****** *		 * PUBLIC *		 * ****** */
 		/**
 		 * Loads the revisions of a specific area
@@ -124,6 +131,7 @@ package com.muxxu.fever.fevermap.data {
 				urlVars.total	= length.toString();
 			}
 			urlVars.token		= Math.round(new Date().getTime() / 1000).toString();
+			urlVars.world		= _currentWorld;
 			urlVars.version		= Constants.DATA_VERSION.toString();
 			var req:URLRequest	= new URLRequest(HTTPPath.getPath("getRevisions"));
             req.data			= RequestEncrypter.encrypt(urlVars);
@@ -145,6 +153,7 @@ package com.muxxu.fever.fevermap.data {
 			}else{
 				urlVars.pseudo	= pseudo;
 			}
+			urlVars.world		= _currentWorld;
 			urlVars.token		= Math.round(new Date().getTime() / 1000).toString();
 			urlVars.version		= Constants.DATA_VERSION.toString();
 			var req:URLRequest	= new URLRequest(HTTPPath.getPath("getUsersOn"));
@@ -160,10 +169,13 @@ package com.muxxu.fever.fevermap.data {
 		 * Sets the user's position
 		 */
 		public function setPosition(x:int, y:int):void {
+			if(_locked) return;
+			
 			_newPoustyPos		= new Point(x, y);
 			var urlVars:URLVariables = new URLVariables();
 			urlVars.x			= x.toString();
 			urlVars.y			= y.toString();
+			urlVars.world		= _currentWorld;
 			urlVars.token		= Math.round(new Date().getTime() / 1000).toString();
 			urlVars.version		= Constants.DATA_VERSION.toString();
 			var req:URLRequest	= new URLRequest(HTTPPath.getPath("setPosition"));
@@ -178,13 +190,20 @@ package com.muxxu.fever.fevermap.data {
 		/**
 		 * Gets the items of a specific area.
 		 */
-		public function loadArea(area:Rectangle = null, clearCache:Boolean = false, pathFinderMode:Boolean = false):void {
+		public function loadArea(area:Rectangle = null, clearCache:Boolean = false, pathFinderMode:Boolean = false, getFLags:Boolean = false):void {
+			if(_locked) return;
+			
+			lock();
+			
 			if(clearCache){
 				cleanCacheHandler();
 				_timerClean.reset();
 			}
 			_lastArea = (area == null) ? _lastArea : area;
 			var urlVars:URLVariables	= new URLVariables();
+			if(getFLags) {
+				urlVars.getFlags= "1";
+			}
 			if(pathFinderMode) {
 				urlVars.pathfinderMode	= "1";
 			}else{
@@ -194,6 +213,7 @@ package com.muxxu.fever.fevermap.data {
 				urlVars.ymax	= _lastArea.bottom.toString();
 			}
 			urlVars.token	= Math.round(new Date().getTime() / 1000).toString();
+			urlVars.world	= _currentWorld;
 			urlVars.version	= Constants.DATA_VERSION.toString();
 			var req:URLRequest = new URLRequest(HTTPPath.getPath("loadArea"));
 			
@@ -210,6 +230,8 @@ package com.muxxu.fever.fevermap.data {
 		 * Creates an area.
 		 */
 		public function createEntry(posX:int, posY:int, items:String, directions:String, enemies:String, data:String):void {
+			if(_locked) return;
+			
 			var urlVars:URLVariables = new URLVariables();
 			urlVars.x0		= posX.toString();
 			urlVars.y0		= posY.toString();
@@ -218,6 +240,7 @@ package com.muxxu.fever.fevermap.data {
 			urlVars.e0		= enemies;
 			urlVars.data0	= data;
 			urlVars.token	= Math.round(new Date().getTime() / 1000).toString();
+			urlVars.world	= _currentWorld;
 			urlVars.version	= Constants.DATA_VERSION.toString();
 			var req:URLRequest = new URLRequest(HTTPPath.getPath("addArea"));
             req.data	= RequestEncrypter.encrypt(urlVars);
@@ -232,6 +255,8 @@ package com.muxxu.fever.fevermap.data {
 		 * Updates an area.
 		 */
 		public function updateEntry(posX:int, posY:int, items:String, directions:String, enemies:String, data:String):void {
+			if(_locked) return;
+			
 			createEntry(posX, posY, items, directions, enemies, data);
 		}
 		
@@ -344,6 +369,10 @@ package com.muxxu.fever.fevermap.data {
 		 * Logs in the user.
 		 */
 		public function uploadData():void {
+			if(_locked) return;
+			
+			lock();
+			
 			var req:URLRequest	= new URLRequest(HTTPPath.getPath("uploadData"));
             req.data	= SharedObjectManager.getInstance().json;
 			req.method	= URLRequestMethod.POST;
@@ -425,6 +454,15 @@ package com.muxxu.fever.fevermap.data {
 			_currentPath = null;
 			dispatchEvent(new DataManagerEvent(DataManagerEvent.PATH_FINDER_PATH_FOUND));
 		}
+		
+		/**
+		 * Sets the current world to use
+		 */
+		public function setWorld(id:String):void {
+			_currentWorld = id;
+			SharedObjectManager.getInstance().currentWorld = id;
+			loadArea(null, true, false, true);
+		}
 
 						/* ******* *		 * PRIVATE *		 * ******* */		/**		 * Initialize the class.		 */		private function initialize():void {			_loaderToAreas = new Dictionary();
 			_objectFiltersStr = "";
@@ -443,7 +481,24 @@ package com.muxxu.fever.fevermap.data {
 					_pfMapEmpty[i][j] = 0;
 				}
 			}
+			_currentWorld = SharedObjectManager.getInstance().currentWorld;
 			SharedObjectManager.getInstance().addEventListener(SharedObjectManagerEvent.DATA_UPDATE, dataChangeHandler);
+		}
+		
+		/**
+		 * Locks the model
+		 */
+		private function lock():void {
+			_locked = true;
+			dispatchEvent(new DataManagerEvent(DataManagerEvent.LOCK));
+		}
+		
+		/**
+		 * Locks the model
+		 */
+		private function unlock():void {
+			_locked = false;
+			dispatchEvent(new DataManagerEvent(DataManagerEvent.UNLOCK));
 		}
 		
 		/**
@@ -512,18 +567,12 @@ package com.muxxu.fever.fevermap.data {
 			
 			if(resultCode > 2 && resultCode < 100) resultCode = 100;
 			if(resultCode == 0) {
-				var i:int, len:int, nodes:XMLList;
-				nodes = data.child("items").child("item");
-				len = nodes.length();
-				var items:Vector.<Revision> = new Vector.<Revision>();
-				for(i = 0; i < len; ++i) {
-					items[i] = new Revision();
-					items[i].populate(nodes[i]);
-				}
+				var collection:RevisionCollection = new RevisionCollection();
+				collection.populate(data);
 				if(parseBoolean(data.child("result").@track)) {
-					dispatchEvent(new DataManagerEvent(DataManagerEvent.LOAD_TRACKING_COMPLETE, 0, null, items));
+					dispatchEvent(new DataManagerEvent(DataManagerEvent.LOAD_TRACKING_COMPLETE, 0, null, collection));
 				}else{
-					dispatchEvent(new DataManagerEvent(DataManagerEvent.LOAD_REVISIONS_COMPLETE, 0, null, items));
+					dispatchEvent(new DataManagerEvent(DataManagerEvent.LOAD_REVISIONS_COMPLETE, 0, null, collection));
 				}
 			} else {
 				dispatchEvent(new DataManagerEvent(DataManagerEvent.LOAD_REVISIONS_ERROR, resultCode, null));
@@ -577,6 +626,7 @@ package com.muxxu.fever.fevermap.data {
 		 * Called when area data are received.
 		 */
 		private function loadAreaCompleteHandler(event:Event):void {
+			unlock();
 			var loader:URLLoader = event.target as URLLoader;
 			var resultCode:int;
 			
@@ -591,6 +641,12 @@ package com.muxxu.fever.fevermap.data {
 			
 			if(resultCode > 2 && resultCode < 100) resultCode = 100;
 			if(resultCode == 0) {
+				var json:String = data.child("data")[0];
+				if(json != null) {
+					SharedObjectManager.getInstance().json = json;
+					dispatchEvent(new DataManagerEvent(DataManagerEvent.CENTER_MAP_ON_POUSTY, 0, _loaderToAreas[event.target], _items));
+				}
+				
 				var i:int, len:int, nodes:XMLList, pos:Point, useCache:Boolean;
 				nodes = data.child("items").child("item");
 				len = nodes.length();
@@ -655,6 +711,7 @@ package com.muxxu.fever.fevermap.data {
 		 * Called if area data loading fails.
 		 */
 		private function loadAreaErrorHandler(event:IOErrorEvent):void {
+			unlock();
 			delete _loaderToAreas[event.target];
 			dispatchEvent(new DataManagerEvent(DataManagerEvent.LOAD_AREA_ERROR, 101, _lastArea));
 		}
@@ -824,9 +881,11 @@ package com.muxxu.fever.fevermap.data {
 				resultCode = 100;
 			}
 			if(checkGlobalActions(resultCode, data)) return;
-			if(resultCode > 3 && resultCode < 100) resultCode = 100;
+			if(resultCode > 2 && resultCode < 100) resultCode = 100;
 			if(resultCode == 0) {
-				_isAdmin = RequestEncrypter.decrypt(data.child("data")[0]) == "1";
+				var xml:XML = RequestEncrypter.decrypt(data.child("data")[0]);
+				_isAdmin = xml.child("rights")[0] == "1";
+				_currentWorld = xml.child("world")[0];
 				Config.addVariable("SESSID", data.child("sessID")[0]);
 				var json:String = data.child("json")[0];
 				if(json != null && json.length > 0) {
@@ -834,14 +893,13 @@ package com.muxxu.fever.fevermap.data {
 				}
 				_isLogged = true;
 				if(_uid != null && _pubkey != null) {
-					if(SharedObjectManager.getInstance().rememberMe) {
+//					if(SharedObjectManager.getInstance().rememberMe) {
 						SharedObjectManager.getInstance().uid = _uid;
 						SharedObjectManager.getInstance().pubkey = _pubkey;
-					}else{
-						SharedObjectManager.getInstance().uid = "";
-						SharedObjectManager.getInstance().pubkey = "";
-					}
-					
+//					}else{
+//						SharedObjectManager.getInstance().uid = "";
+//						SharedObjectManager.getInstance().pubkey = "";
+//					}
 				}
 				dispatchEvent(new DataManagerEvent(DataManagerEvent.LOGIN_COMPLETE, 0));
 			} else {
@@ -960,6 +1018,8 @@ package com.muxxu.fever.fevermap.data {
 		 * Called when data upload completes.
 		 */
 		private function uploadDataCompleteHandler(event:Event):void {
+			unlock();
+			
 			var loader:URLLoader = event.target as URLLoader;
 			var resultCode:int;
 			try{
@@ -968,6 +1028,7 @@ package com.muxxu.fever.fevermap.data {
 			}catch(error:Error){
 				resultCode = 100;
 			}
+			
 			if(checkGlobalActions(resultCode, data)) return;
 			if(resultCode > 3 && resultCode < 100) resultCode = 100;
 			if(resultCode == 0) {
@@ -981,6 +1042,8 @@ package com.muxxu.fever.fevermap.data {
 		 * Called if data upload fails.
 		 */
 		private function uploadDataErrorHandler(event:IOErrorEvent):void {
+			unlock();
+			
 			dispatchEvent(new DataManagerEvent(DataManagerEvent.DATA_UPLOAD_ERROR, 101));
 
 		}
