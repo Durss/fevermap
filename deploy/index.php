@@ -202,6 +202,7 @@
 			so.useExpressInstall('swf/expressinstall.swf');
 			so.addParam('menu', 'false');
 			so.addParam('allowFullScreen', 'true');
+			so.addParam('wmode', 'opaque');
 			so.addVariable("configXml", "./xml/config.xml?v=3");
 			so.addVariable("lang", "<?php echo $lang; ?>");
 <?php
