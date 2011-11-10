@@ -198,6 +198,7 @@ package com.muxxu.fever.fevermap.components.menu.message {
 				tf.borderColor = 0;
 				tf.background = true;
 				tf.backgroundColor = 0x724338;
+				tf.selectable = true;
 				if(items[i].love == _COLORS.length -1) {
 					tf.borderColor = 0x159eb7;
 					tf.backgroundColor = 0x0f7182;

@@ -198,7 +198,7 @@
 		
 		<script type="text/javascript">
 			// <![CDATA[
-			var so = new SWFObject('swf/FeverMap.swf?v=52', 'content', '100%', '100%', '10.1', '#412720');
+			var so = new SWFObject('swf/FeverMap.swf?v=53', 'content', '100%', '100%', '10.1', '#412720');
 			so.useExpressInstall('swf/expressinstall.swf');
 			so.addParam('menu', 'false');
 			so.addParam('allowFullScreen', 'true');
