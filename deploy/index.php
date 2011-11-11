@@ -127,6 +127,7 @@
 		
 		<script type="text/javascript" src="js/ZeroClipboard.js"></script>
 		<script type="text/javascript" src="js/swfobject.js"></script>
+		<script type="text/javascript" src="js/swfwheel.js"></script>
 		<script type="text/javascript">
 
 		  var _gaq = _gaq || [];
@@ -203,6 +204,8 @@
 			so.addParam('menu', 'false');
 			so.addParam('allowFullScreen', 'true');
 			so.addParam('wmode', 'opaque');
+			so.setAttribute("id", "externalDynamicContent");
+			so.setAttribute("name", "externalDynamicContent");
 			so.addVariable("configXml", "./xml/config.xml?v=3");
 			so.addVariable("lang", "<?php echo $lang; ?>");
 <?php
