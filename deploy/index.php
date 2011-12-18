@@ -21,7 +21,7 @@
 		preg_match('/name="(.*?)"/', $xml, $matches); //*? = quantificateur non gourmand
 		if ($xml->getName() != "error") {
 			$pseudo	= $matches[1];
-			$_GET["lang"] = $xml->attributes()->lang;
+			$_GET["lang"] = (string)$xml->attributes()->lang;
 		}
 	}
 	
