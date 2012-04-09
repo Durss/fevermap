@@ -26,6 +26,6 @@ package com.muxxu.fever.fevermap.commands {	import com.muxxu.fever.fevermap.dat
 			if(event.type == DataManagerEvent.SHOW_APP_MESSAGE) {
 				 message = event.message.message; 
 			} else if(event.type == DataManagerEvent.NEED_APP_UPDATE) {				if(Capabilities.playerType.toLowerCase() == "desktop") {					message = Label.getLabel("needUpdateAir");				}else{					message = Label.getLabel("needUpdateSwf"); 
-				}			}else{				message = "Unknown login faillure";			}			dispatchEvent(new CommandEvent(CommandEvent.ERROR, message));
+				}			}else{				message = Label.getLabel("loginError"+event.resultCode);			}			dispatchEvent(new CommandEvent(CommandEvent.ERROR, message));
 		}
 	}}
