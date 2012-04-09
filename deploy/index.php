@@ -18,9 +18,9 @@
 	if(isset($_GET['uid'], $_GET['pubkey'])) {
 		$url = "http://muxxu.com/app/xml?app=fevermap&xml=user&id=".$_GET['uid']."&key=".md5("d1268d376ba9e54593b4ca03c756f1a1" . $_GET["pubkey"]);
 		$xml = simplexml_load_file($url);
-		preg_match('/name="(.*?)"/', $xml, $matches); //*? = quantificateur non gourmand
+		preg_match('/name="(.*?)"/i', $xml, $matches, PREG_OFFSET_CAPTURE); //*? = quantificateur non gourmand
 		if ($xml->getName() != "error") {
-			$pseudo	= $matches[1];
+			$pseudo	= (string) $xml->attributes()->name;
 			$_GET["lang"] = (string)$xml->attributes()->lang;
 		}
 	}
@@ -199,7 +199,7 @@
 		
 		<script type="text/javascript">
 			// <![CDATA[
-			var so = new SWFObject('swf/FeverMap.swf?v=53', 'content', '100%', '100%', '10.1', '#412720');
+			var so = new SWFObject('swf/FeverMap.swf?v=54', 'content', '100%', '100%', '10.1', '#412720');
 			so.useExpressInstall('swf/expressinstall.swf');
 			so.addParam('menu', 'false');
 			so.addParam('allowFullScreen', 'true');

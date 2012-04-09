@@ -74,10 +74,10 @@
 	$admins = "<table width='100%'>";
 	$admins .= "	<tr bgcolor='#291612'><td colspan='2'>Pseudo</td></tr>";
 	$tot = count($results);
-	for($i=0; $i < $tot; $i+=2) {
+	for ($i = 0; $i < $tot; $i += 2) {
 		$admins .= "<tr>";
 		$admins .= "<td><a href='http://muxxu.com/u/".$results[$i]['pseudo']."' target='_blank'>".$results[$i]['pseudo']."</a></td>";
-		if($i<$tot) {
+		if($i+1<$tot-1) {
 			$admins .= "<td><a href='http://muxxu.com/u/".$results[$i + 1]['pseudo']."' target='_blank'>".$results[$i + 1]['pseudo']."</a></td>";
 		}
 		$admins .= "</tr>";
