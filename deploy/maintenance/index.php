@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+	<head>
+		<title>FeverMap - Maintenance</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="../favicon.ico" />
+		<style type="text/css">
+            html, body {
+                height: 100%;
+                overflow: hidden;
+                margin:0;
+                padding:0;
+            }
+            body {
+                background: #ffffff;
+                font: 86% Arial, "Helvetica Neue", sans-serif;
+                margin: 0;                
+            }
+            #content {
+                height: 100%;
+            }
+		</style>
+		
+		<script type="text/javascript" src="../js/swfobject.js"></script>
+    </head>
+    <body>
+		<div id="content">
+			<p>In order to view this page you need JavaScript and Flash Player 10+ support!</p>
+		</div>
+		
+		<script type="text/javascript">
+			// <![CDATA[
+			<?php
+				$current = time();
+				$start = floor($current / 3600) * 3600;
+				$end = floor($current / 3600 + 1) * 3600;
+			?>
+            var so = new SWFObject('../swf/maintenance.swf?v=6', 'content', '100%', '100%', '10', '#ffffff');
+            so.useExpressInstall('swf/expressinstall.swf');
+            so.addParam('menu', 'false');
+            so.addParam('allowFullScreen', 'true');
+            so.addVariable('startDate', '<?php echo $start * 1000; ?>');
+            so.addVariable('endDate',   '<?php echo $end * 1000; ?>');
+            so.write('content');
+			/*]]>*/
+        </script>
+    </body>
+</html>
