@@ -1,16 +1,15 @@
 package com.muxxu.fever.fevermap.components.menu.l10n {
-
-	import flash.net.URLRequest;
-	import flash.net.navigateToURL;
-	import com.nurun.components.button.visitors.CssVisitor;
-	import com.nurun.components.button.IconAlign;
 	import com.muxxu.fever.fevermap.components.menu.AbstractMenuContent;
 	import com.muxxu.fever.fevermap.components.menu.IMenuContent;
 	import com.nurun.components.button.BaseButton;
+	import com.nurun.components.button.IconAlign;
+	import com.nurun.components.button.visitors.CssVisitor;
 	import com.nurun.structure.environnement.configuration.Config;
 
 	import flash.display.Bitmap;
 	import flash.events.MouseEvent;
+	import flash.net.URLRequest;
+	import flash.net.navigateToURL;
 	import flash.utils.Dictionary;
 	import flash.utils.getDefinitionByName;
 	
