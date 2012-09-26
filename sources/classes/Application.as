@@ -41,6 +41,7 @@ package {
 	import com.nurun.utils.input.keyboard.events.KeyboardSequenceEvent;
 	import com.nurun.utils.math.MathUtils;
 	import com.nurun.utils.pos.PosUtils;
+	import com.spikything.utils.MouseWheelTrap;
 
 	import org.libspark.ui.SWFWheel;
 
@@ -84,6 +85,7 @@ package {
 			
 		}				/**		 * Called when the stage is available.		 */		private function addedToStageHandler(event:Event):void {			removeEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);			stage.addEventListener(Event.RESIZE, computePositionsInit);
 			SWFWheel.initialize(stage);
+			MouseWheelTrap.setup(stage);
 			resetApplication();
 		}
 		
