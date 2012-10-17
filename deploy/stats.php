@@ -163,8 +163,8 @@
 			<div id="section"><b>Top admins :</b> <?php echo $adminsRank0; ?></div>
 			<br />
 			<div id="title">Statistiques Sultura</div>
-			<div id="section"><b>Îles repertoriées :</b> <?php echo $submitted1." (".floor(($submitted1)/100)."%)"; ?></div>
-			<div id="section"><b>Îles Nettoyées :</b> <?php echo $cleaned1." (".floor(($cleaned1)/100)."%)"; ?></div>
+			<div id="section"><b>Îles repertoriées :</b> <?php echo $submitted1." (".floor(($submitted1)/12100 * 100)."%)"; ?></div>
+			<div id="section"><b>Îles Nettoyées :</b> <?php echo $cleaned1." (".floor(($cleaned1)/12100 * 100)."%)"; ?></div>
 			<div id="section"><b>Révisions effectuées :</b> <?php echo $revisions1; ?></div>
 			<div id="section"><b>Utilisateurs :</b> <?php echo $users1; ?></div>
 			<div id="section"><b>Top admins :</b> <?php echo $adminsRank1; ?></div>
