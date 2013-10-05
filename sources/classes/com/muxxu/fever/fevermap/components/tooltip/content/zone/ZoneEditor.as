@@ -415,7 +415,8 @@ package com.muxxu.fever.fevermap.components.tooltip.content.zone {
 			stage.addEventListener(KeyboardEvent.KEY_UP, keyUpHandler);
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler);
 			stage.addEventListener(Event.PASTE, pastHandler);
-			stage.addEventListener(Event.COPY, copyHandler);
+			//Doesn't work anymore on chrome with PPAPI
+//			stage.addEventListener(Event.COPY, copyHandler);
 		}
 		
 		/**
@@ -446,6 +447,9 @@ package com.muxxu.fever.fevermap.components.tooltip.content.zone {
 			if(event.keyCode == Keyboard.ESCAPE) {
 				_selectorIndex = _items.length - 4;
 				selectItem(_items[_selectorIndex]);
+			}
+			if(event.keyCode == Keyboard.C && event.ctrlKey) {
+				copyHandler(event);
 			}
 		}
 		

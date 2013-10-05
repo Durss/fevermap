@@ -51,7 +51,7 @@ package com.muxxu.fever.fevermap.components.form {	import com.nurun.structure.e
 			if(dirs >> 1 & 0x1 == 1) _arrowBottom.selected = true;
 			if(dirs >> 2 & 0x1 == 1) _arrowLeft.selected = true;
 			if(dirs >> 3 & 0x1 == 1) _arrowTop.selected = true;		}		/* ****** *		 * PUBLIC *		 * ****** */		/**		 * Opens the form.		 */		public function open():void {
-			_opened = true;			if(_data != null) {				DataManager.getInstance().getRevisions(_data.x, _data.y);			}else{				_revisions.populate(null);				doOpen();			}		}				/**		 * Populates the component		 */		public function populate(data:MapEntry):void {			_data = data;			reset();			if(_data != null) {				directions	= _data.rawData.@d;				_map.populate(_data);				_map.open();			}		}				/**		 * Opens the form.		 */		public function close():void {			_closing = true;			TweenLite.to(_mask, .25, {ease:Quad.easeInOut, height:0, onUpdate:computePositions, onComplete:onHideComplete});		}
+			_opened = true;			if(_data != null) {				DataManager.getInstance().getRevisions(_data.x, _data.y);			}else{				_revisions.populate(null);				doOpen();			}		}				/**		 * Populates the component		 */		public function populate(data:MapEntry):void {			_data = data;			reset();			if(_data != null) {				directions	= _data.rawData.@d;				_map.populate(_data);			}			_map.open();		}				/**		 * Opens the form.		 */		public function close():void {			_closing = true;			TweenLite.to(_mask, .25, {ease:Quad.easeInOut, height:0, onUpdate:computePositions, onComplete:onHideComplete});		}
 
 		/**		 * Resets the form.		 */
 		public function reset():void {			_arrowBottom.selected = false;
