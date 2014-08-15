@@ -5,6 +5,10 @@
 	$results = $Mysql->TabResSQL($sql);
 	$submitted0 = $results[0]["total"];
 	
+	$sql = 'SELECT COUNT(*) as `total` FROM `feverAreas` WHERE `world`=0 AND data=""';
+	$results = $Mysql->TabResSQL($sql);
+	$notComplete0 = $results[0]["total"];
+	
 	$sql = 'SELECT COUNT(*) as `total` FROM `feverAreas` WHERE `cleaned`=1 && `world`=0';
 	$results = $Mysql->TabResSQL($sql);
 	$cleaned0 = $results[0]["total"];
@@ -21,7 +25,7 @@
 	$results = $Mysql->TabResSQL($sql);
 	$tot0 = count($results);
 	$adminsRank0 = "<table width='100%'>";
-	$adminsRank0 .= "	<tr bgcolor='#291612'><td>Pseudo</td><td>RÈvisions</td></tr>";
+	$adminsRank0 .= "	<tr bgcolor='#291612'><td>Pseudo</td><td>R√©visions</td></tr>";
 	for($i=0; $i < $tot0; $i++) {
 		$sql2 = 'SELECT `pseudo` FROM feverUsers WHERE uid='.$results[$i]["uid"];
 		$results2 = $Mysql->TabResSQL($sql2);
@@ -39,6 +43,10 @@
 	$results = $Mysql->TabResSQL($sql);
 	$submitted1 = $results[0]["total"];
 	
+	$sql = 'SELECT COUNT(*) as `total` FROM `feverAreas` WHERE `world`=1 AND data=""';
+	$results = $Mysql->TabResSQL($sql);
+	$notComplete1 = $results[0]["total"];
+	
 	$sql = 'SELECT COUNT(*) as `total` FROM `feverAreas` WHERE `cleaned`=1 && `world`=1';
 	$results = $Mysql->TabResSQL($sql);
 	$cleaned1 = $results[0]["total"];
@@ -55,7 +63,7 @@
 	$results = $Mysql->TabResSQL($sql);
 	$tot1 = count($results);
 	$adminsRank1 = "<table width='100%'>";
-	$adminsRank1 .= "	<tr bgcolor='#291612'><td>Pseudo</td><td>RÈvisions</td></tr>";
+	$adminsRank1 .= "	<tr bgcolor='#291612'><td>Pseudo</td><td>R√©visions</td></tr>";
 	for($i=0; $i < $tot1; $i++) {
 		$sql2 = 'SELECT `pseudo` FROM feverUsers WHERE uid='.$results[$i]["uid"];
 		$results2 = $Mysql->TabResSQL($sql2);
@@ -90,7 +98,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
 	<head>
 		<title>FeverMap</title>
-		<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 		<link rel="shortcut icon" href="./favicon_new.ico" />
 		<style type="text/css">
 		html, body {
@@ -156,16 +164,18 @@
 		<center>
 			<br />
 			<div id="title">Statistiques Gonkrogme</div>
-			<div id="section"><b>Œles repertoriÈes :</b> <?php echo $submitted0." (".floor(($submitted0)/100)."%)"; ?></div>
-			<div id="section"><b>Œles NettoyÈes :</b> <?php echo$cleaned0." (".floor(($cleaned0)/100)."%)"; ?></div>
-			<div id="section"><b>RÈvisions effectuÈes :</b> <?php echo $revisions0; ?></div>
+			<div id="section"><b>√éles repertori√©es :</b> <?php echo $submitted0." (".floor(($submitted0)/100)."%)"; ?></div>
+			<div id="section"><b>√éles incompl√®tes :</b> <?php echo $notComplete0." (".floor(($notComplete0)/100)."%)"; ?></div>
+			<div id="section"><b>√éles Nettoy√©es :</b> <?php echo$cleaned0." (".floor(($cleaned0)/100)."%)"; ?></div>
+			<div id="section"><b>R√©visions effectu√©es :</b> <?php echo $revisions0; ?></div>
 			<div id="section"><b>Utilisateurs :</b> <?php echo $users0; ?></div>
 			<div id="section"><b>Top admins :</b> <?php echo $adminsRank0; ?></div>
 			<br />
 			<div id="title">Statistiques Sultura</div>
-			<div id="section"><b>Œles repertoriÈes :</b> <?php echo $submitted1." (".floor(($submitted1)/14400 * 100)."%)"; ?></div>
-			<div id="section"><b>Œles NettoyÈes :</b> <?php echo $cleaned1." (".floor(($cleaned1)/14400 * 100)."%)"; ?></div>
-			<div id="section"><b>RÈvisions effectuÈes :</b> <?php echo $revisions1; ?></div>
+			<div id="section"><b>√éles repertori√©es :</b> <?php echo $submitted1." (".floor(($submitted1)/14400 * 100)."%)"; ?></div>
+			<div id="section"><b>√éles incompl√®tes :</b> <?php echo $notComplete1." (".floor(($notComplete1)/14400 * 100)."%)"; ?></div>
+			<div id="section"><b>√éles Nettoy√©es :</b> <?php echo $cleaned1." (".floor(($cleaned1)/14400 * 100)."%)"; ?></div>
+			<div id="section"><b>R√©visions effectu√©es :</b> <?php echo $revisions1; ?></div>
 			<div id="section"><b>Utilisateurs :</b> <?php echo $users1; ?></div>
 			<div id="section"><b>Top admins :</b> <?php echo $adminsRank1; ?></div>
 			<br />
