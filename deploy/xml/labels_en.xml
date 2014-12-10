@@ -121,6 +121,7 @@
 		<label code="renderModePopulation"><![CDATA[Players <i>(<font color="#1B848F">Populated</font> - <font color="#509101">Empty</font>)</i>]]></label>
 		<label code="renderModeDifficulty"><![CDATA[Difficulty <i>(<font color="#DB0202">Hard</font> - <font color="#509101">Easy</font>)</i>]]></label>
 		<label code="renderModeFreedIslands"><![CDATA[Freed islands <i>(<font color="#DB0202">Not freed</font> - <font color="#509101">Freed</font>)</i>]]></label>
+		<label code="renderModeIncompleteIslands"><![CDATA[Incompletes islands<i>(<font color="#DB0202">Incomplete</font> - <font color="#509101">Complete</font>)</i>]]></label>
 		<label code="toggleFullScreen"><![CDATA[Fullscreen ON/OFF]]></label>
 		<label code="autoExitFullScreenHelp"><![CDATA[As the text input is disabled in fullscreen mode, fullscreen has been automatically disabled.]]></label>
 		

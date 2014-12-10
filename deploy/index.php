@@ -199,14 +199,14 @@
 		
 		<script type="text/javascript">
 			// <![CDATA[
-			var so = new SWFObject('swf/FeverMap.swf?v=56', 'content', '100%', '100%', '10.1', '#412720');
+			var so = new SWFObject('swf/FeverMap.swf?v=57', 'content', '100%', '100%', '10.1', '#412720');
 			so.useExpressInstall('swf/expressinstall.swf');
 			so.addParam('menu', 'false');
 			so.addParam('allowFullScreen', 'true');
 			so.addParam('wmode', 'opaque');
 			so.setAttribute("id", "externalDynamicContent");
 			so.setAttribute("name", "externalDynamicContent");
-			so.addVariable("configXml", "./xml/config.xml?v=5");
+			so.addVariable("configXml", "./xml/config.xml?v=6");
 			so.addVariable("lang", "<?php echo $lang; ?>");
 <?php
 	if (isset($_GET["uid"], $_GET["pubkey"])) {
