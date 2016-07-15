@@ -79,7 +79,7 @@ package com.muxxu.fever.fevermap.components.menu.tracker {
 		 */
 		public function populate(data:Revision):void {
 			_data = data;
-			populateMatrix(JSON.decode(_data.matrix));
+			populateMatrix(by.blooddy.crypto.serialization.JSON.decode(_data.matrix));
 		}
 		
 		/**
@@ -164,7 +164,7 @@ package com.muxxu.fever.fevermap.components.menu.tracker {
 		 * Called when the component is rolled out.
 		 */
 		private function rollOutHandler(event:MouseEvent):void {
-			populateMatrix(JSON.decode(_data.matrix));
+			populateMatrix(by.blooddy.crypto.serialization.JSON.decode(_data.matrix));
 		}
 		
 		/**
@@ -172,7 +172,7 @@ package com.muxxu.fever.fevermap.components.menu.tracker {
 		 */
 		private function rollOverHandler(event:MouseEvent):void {
 			if(_data.matrixBefore.length > 0) {
-				populateMatrix(JSON.decode(_data.matrixBefore));
+				populateMatrix(by.blooddy.crypto.serialization.JSON.decode(_data.matrixBefore));
 				_infos.text = Label.getLabel("menuTrackItemInfosBefore");
 			}
 		}

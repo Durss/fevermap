@@ -29,6 +29,7 @@
 	for($i=0; $i < $tot0; $i++) {
 		$sql2 = 'SELECT `pseudo` FROM feverUsers WHERE uid='.$results[$i]["uid"];
 		$results2 = $Mysql->TabResSQL($sql2);
+		if(empty($results2)) continue;
 		$adminsRank0 .= "<tr>";
 		$adminsRank0 .= "<td><a href='http://muxxu.com/u/".$results2[0]['pseudo']."' target='_blank'>".$results2[0]['pseudo']."</a></td><td>".$results[$i]["total"]."</td>";
 		$adminsRank0 .= "</tr>";
@@ -109,10 +110,10 @@
 			font-family: Trebuchet MS,Arial,sans-serif;
 		}
 		body {
-			background: url("images/background") repeat scroll 0 190px transparent;
+			background: url("images/background.png") repeat scroll 0 190px transparent;
 			font: 86 % Arial, "Helvetica Neue", sans - serif;
 			color:#ffffff;
-			margin: 0;                
+			margin: 0;
 		}
 		b {
 			color:#FF8000;

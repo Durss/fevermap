@@ -114,6 +114,7 @@ package com.muxxu.fever.fevermap.components.map.icons {
 		 */
 		public function setImageByZoomLevel(zoom:int):void {
 			var m:Matrix;
+			var matrix:Array;
 			var filters:String, indexes:Array, i:int, len:int, percent:Number, color:int, alpha:int, sum:int;
 			if(zoom != -1) _zoom = zoom;
 			
@@ -196,6 +197,27 @@ package com.muxxu.fever.fevermap.components.map.icons {
 				displayPousty();
 				bitmapData.lock();
 				return;
+			}else if(_renderMode == 5) {
+				var isGround:Boolean = false;
+				if(String(_data.@data).length > 0) {
+					matrix = by.blooddy.crypto.serialization.JSON.decode(_data.@data);
+					var lenI:int, lenJ:int, j:int, grounds:int;
+					var level1Values:Array = [1,2,3,"Wall","Ladder"];
+					lenI = matrix.length;
+					for(i = 0; i < lenI; ++i) {
+						lenJ = matrix[i].length;
+						for(j = 0; j < lenJ; ++j) {
+							if(level1Values.indexOf( matrix[i][j] ) > -1) grounds ++;
+						}
+					}
+					isGround = grounds > 10;
+				}
+				alpha = 0xff * .5;
+				color = isGround? 0x509101 : 0x910000;
+				bitmapData = new BitmapData(_zoom * 16, _zoom * 16, true, color | (alpha << 24));
+				displayPousty();
+				bitmapData.lock();
+				return;
 			}
 			
 			
@@ -203,10 +225,10 @@ package com.muxxu.fever.fevermap.components.map.icons {
 				if(bitmapData == null) {
 					bitmapData = new BitmapData(_island.width, _island.height, true, 0);
 					if(_zoom < 5) {
-						var matrix:Array = [	.55, .55, .55, 0, 0,
-											.55, .55, .55, 0, 0,
-											.55, .55, .55, 0, 0,
-											0, 0, 0, .2, 0 ];
+						matrix = [	.55, .55, .55, 0, 0,
+									.55, .55, .55, 0, 0,
+									.55, .55, .55, 0, 0,
+									0, 0, 0, .2, 0 ];
 						_island.filters = [new ColorMatrixFilter(matrix)];
 					}
 					m = new Matrix();
@@ -386,7 +408,7 @@ package com.muxxu.fever.fevermap.components.map.icons {
 			var i:int, j:int, lenI:int, lenJ:int;
 			var island:Shape = new Shape();
 			if(String(_data.@data).length > 0) {
-				var matrix:Array = JSON.decode(_data.@data);
+				var matrix:Array = by.blooddy.crypto.serialization.JSON.decode(_data.@data);
 				lenI = matrix.length;
 				for(i = 0; i < lenI; ++i) {
 					lenJ = matrix[i].length;

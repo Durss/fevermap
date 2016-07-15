@@ -2,7 +2,7 @@
 	
 		<project default="1. Package application" name="FeverMap">
 
-		<property name="sdk_dir" 			value="D:/Softwares/flex_sdk_v4.1" />
+		<property name="sdk_dir" 			value="D:/Softwares/Flex4.6" />
 		<property name="mxmlc" 				value="${sdk_dir}/lib/mxmlc.jar" />
 		<property name="mxmlc_exe" 			value="${sdk_dir}/bin/mxmlc.exe" />
 		<property name="compc" 				value="${sdk_dir}/bin/compc.exe" />
@@ -76,7 +76,7 @@
 					<arg value="-include-libraries=sources/bin/graphics.swc" />
 					<arg value="-file-specs=${main_source}" />
 					<arg value="-output=${publish_dir}/${swf_file}" />
-					<arg value="-target-player=10.1" />
+					<arg value="-target-player=11" />
 					<arg value="-load-externs=${exclude_dir}/applicationLinkReport.xml" />
 					<arg value="-static-link-runtime-shared-libraries=true" />
 					<!-- <arg value="-use-network=false" /> -->
@@ -93,7 +93,7 @@
 					<arg value="-include-libraries=sources/bin/graphics.swc" />
 					<arg value="-file-specs=${main_source}" />
 					<arg value="-output=${publish_dir}/${swf_file_beta}" />
-					<arg value="-target-player=10.1" />
+					<arg value="-target-player=11" />
 					<arg value="-load-externs=${exclude_dir}/applicationLinkReport.xml" />
 					<arg value="-static-link-runtime-shared-libraries=true" />
 					<!-- <arg value="-use-network=false" /> -->
@@ -139,7 +139,7 @@
 							'${class_dir}/com/muxxu/fever/fevermap/crypto/DummyRoot.as'
 							-output '${assets_dir}/crypto.swf'
 							-optimize=true
-							-target-player=10 
+							-target-player=11 
 							-omit-trace-statements=true
 							-debug=false"/>
 			</exec>
@@ -155,7 +155,7 @@
 							-library-path '${basedir}/sources/bin/framework_FP10.swc'
 							-is ${class_dir}/com/muxxu/fever/fevermap/crypto
 							-optimize=true
-							-target-player=10
+							-target-player=11
 							-debug=false"/>
 			</exec>
 		</target>
@@ -165,7 +165,8 @@
 				<arg id="xorKey" value="fd9fd9sdfIFfd5fdohgfdIUFYDGYfd6985f9dFJHPSOUyfgfd5f8d98fd" />
 				<arg id="filePath" value="${assets_dir}/crypto.swf" />
 			</java>-->
-			<taskdef name="xor" classname="XORTask" classpath="${debugdir}"/>
+
+			<taskdef name="xor" classname="com.nurun.ant.XORTask" classpath="${ant_path}/XORTask.jar" />
 			<xor xorKey="QpU13q745DnlwuQ1dT599LF64W0b74wN1wC326Mb77G562C4zqy1pKsVJAEN2DjJuk0UCo7Fwrqt91lNl0K9YIWQ8uMElm71" filePath="${assets_dir}/crypto.swf"/>
 		</target>
 	</project>

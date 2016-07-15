@@ -106,7 +106,8 @@ package com.muxxu.fever.fevermap.components.menu.filters {
 									Label.getLabel("renderModePath"),
 									Label.getLabel("renderModePopulation"),
 									Label.getLabel("renderModeDifficulty"),
-									Label.getLabel("renderModeFreedIslands")];
+									Label.getLabel("renderModeFreedIslands"),
+									Label.getLabel("renderModeIncompleteIslands")];
 			_group = new FormComponentGroup();
 			
 			_showGotObjects = _container.addChild(new FeverCheckBox(Label.getLabel("showGotObjects"))) as FeverCheckBox;

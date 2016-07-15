@@ -75,6 +75,8 @@
 			if ($res == 0) {
 				$rights = $sqlRes[0]["rights"];
 				$world = $sqlRes[0]["world"];
+				if($rights == 1) $_SESSION["admin"] = true;
+				else $_SESSION["admin"] = false;
 			}
 		}
 			
