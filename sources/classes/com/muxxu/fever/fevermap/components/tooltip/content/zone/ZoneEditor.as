@@ -98,7 +98,7 @@ package com.muxxu.fever.fevermap.components.tooltip.content.zone {
 		/**
 		 * Gets the grid's data as JSON string.
 		 */
-		public function get data():String { return JSON.encode(_matrix); }
+		public function get data():String { return by.blooddy.crypto.serialization.JSON.encode(_matrix); }
 		
 		/**
 		 * Gets the enemies.
@@ -153,7 +153,7 @@ package com.muxxu.fever.fevermap.components.tooltip.content.zone {
 		public function populate(data:MapEntry):void {
 			var str:String = data.rawData.@data;
 			if(str.length > 0) {
-				_matrix = JSON.decode(str);
+				_matrix = by.blooddy.crypto.serialization.JSON.decode(str);
 				renderGrid();
 			}else{
 				//Retro compatibility management.
@@ -181,7 +181,7 @@ package com.muxxu.fever.fevermap.components.tooltip.content.zone {
 		 */
 		public function populateRevision(data:Revision):void {
 			if(data.matrix.length > 0 ) {
-				_matrix = JSON.decode(data.matrix);
+				_matrix = by.blooddy.crypto.serialization.JSON.decode(data.matrix);
 				renderGrid();
 			}else{
 				reset();
@@ -424,7 +424,7 @@ package com.muxxu.fever.fevermap.components.tooltip.content.zone {
 		 */
 		private function pastHandler(event:Event):void {
 			if(!_opened) return;
-			var m:Array = JSON.decode(Clipboard.generalClipboard.getData(ClipboardFormats.TEXT_FORMAT) as String);
+			var m:Array = by.blooddy.crypto.serialization.JSON.decode(Clipboard.generalClipboard.getData(ClipboardFormats.TEXT_FORMAT) as String);
 			if(m != null) {
 				_matrix = m;
 				renderGrid();
@@ -436,7 +436,7 @@ package com.muxxu.fever.fevermap.components.tooltip.content.zone {
 		 */
 		private function copyHandler(event:Event):void {
 			if(!_opened) return;
-			Clipboard.generalClipboard.setData(ClipboardFormats.TEXT_FORMAT, JSON.encode(_matrix));
+			Clipboard.generalClipboard.setData(ClipboardFormats.TEXT_FORMAT, by.blooddy.crypto.serialization.JSON.encode(_matrix));
 		}
 		
 		/**
